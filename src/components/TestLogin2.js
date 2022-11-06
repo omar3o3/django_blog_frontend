@@ -73,7 +73,7 @@ export default function SignInSide() {
         localStorage.setItem("refresh_token", res.data.refresh);
         axiosInstance.defaults.headers["Authorization"] =
           "JWT " + localStorage.getItem("access_token");
-        // history.push("/");
+        history.push("/home");
         console.log(res);
         console.log(res.data);
       });

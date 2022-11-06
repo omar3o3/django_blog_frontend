@@ -7,22 +7,22 @@ import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
-// import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
-// import AdbIcon from "@mui/icons-material/Adb";
 
 import Link from "@mui/material/Link";
 // import { NavLink } from "react-router-dom";
-import { Link as RouterLink } from "react-router-dom";
+import { Link as RouterLink, useHistory, NavLink } from "react-router-dom";
 
 const pages = ["History", "Account"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
-function ResponsiveAppBar() {
+function ResponsiveAppBar({ purpleBackground }) {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+
+  const history = useHistory();
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -40,10 +40,9 @@ function ResponsiveAppBar() {
   };
 
   return (
-    <AppBar position="static" style={{background: "#9c27b0"}}>
+    <AppBar position="static" style={{ background: purpleBackground }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          {/* <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} /> */}
           <Typography
             variant="h6"
             noWrap
@@ -94,7 +93,6 @@ function ResponsiveAppBar() {
               {pages.map((page) => (
                 <MenuItem key={page}>
                   <Link
-                    // key={page}
                     component={RouterLink}
                     to={`/${page}`}
                     underline="none"
@@ -106,7 +104,6 @@ function ResponsiveAppBar() {
               ))}
             </Menu>
           </Box>
-          {/* <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} /> */}
           <Typography
             variant="h5"
             noWrap
@@ -140,12 +137,21 @@ function ResponsiveAppBar() {
               </MenuItem>
             ))}
           </Box>
+          <Button
+            color="inherit"
+            variant="outlined"
+            component={NavLink}
+            to="/logout"
+          >
+            Log out
+          </Button>
 
-          <Box sx={{ flexGrow: 0 }}>
+          {/* <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                {/* <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" /> */}
-              </IconButton>
+              <IconButton
+                onClick={handleOpenUserMenu}
+                sx={{ p: 0 }}
+              ></IconButton>
             </Tooltip>
             <Menu
               sx={{ mt: "45px" }}
@@ -169,7 +175,7 @@ function ResponsiveAppBar() {
                 </MenuItem>
               ))}
             </Menu>
-          </Box>
+          </Box> */}
         </Toolbar>
       </Container>
     </AppBar>

@@ -1,45 +1,62 @@
 import React, { useState, useEffect } from "react";
 import './App.css';
 
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  useHistory,
+  Redirect,
+} from "react-router-dom";
 
 // import Register from "./components/Register";
-// import Login from "./components/Login";
 import Logout from "./components/Logout";
-// import Header from "./components/Header";
-// import TestLogin from "./components/TestLogin";
-// import TestHeader from "./components/TestHeader";
 import TestHeader2 from "./components/TestHeader2";
 import TestLogin2 from "./components/TestLogin2";
+import TestRegister from "./components/TestRegister";
+import LandingPage from "./components/LandingPage";
 
 function App() {
 
-  // const [django, setDjango] = useState([]);
+  let history = useHistory();
 
+  let firstName = localStorage.getItem("firstName");
+  let lastName = localStorage.getItem("lastName");
+  let email = localStorage.getItem("email");
+  let userName = localStorage.getItem("userName");
+
+
+  const purpleBackground = "#9c27b0";
+
+  // if (!firstName) return <TestLogin2/>;
   // useEffect(() => {
-  //   fetch("/users/get_users")
-  //     .then((resp) => resp.json())
-  //     .then((data) => setDjango(data));
+  //   if(firstName) {
+  //     // history.push("/home");
+  //     <Router>
+  //       <Redirect to="/home" />;
+  //     </Router>
+  //   }
   // }, []);
-
-  // console.log(django);
 
   return (
     <div className="App">
-      {/* <h1>hi</h1> */}
       <Router>
-        <TestHeader2/>
-        {/* <TestHeader/> */}
-        {/* <Header/> */}
+        {firstName ? <TestHeader2 purpleBackground={purpleBackground} /> : null}
         <Switch>
-          {/* <Route path="/register">
-            <Register />
-          </Route> */}
-          <Route path="/login">
-            <TestLogin2 />
+        {firstName ? (
+          <Redirect from={["/register", "/login"]} to="/home" />
+        ) : null}
+          <Route exact path="/register">
+            <TestRegister purpleBackground={purpleBackground} />
           </Route>
-          <Route path="/logout">
-            <Logout />
+          <Route exact path="/login">
+            <TestLogin2 purpleBackground={purpleBackground} />
+          </Route>
+          <Route exact path="/logout">
+            <Logout purpleBackground={purpleBackground} />
+          </Route>
+          <Route exact path="/home">
+            <LandingPage purpleBackground={purpleBackground} />
           </Route>
         </Switch>
       </Router>
