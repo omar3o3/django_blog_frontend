@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import axiosInstance from "../axios";
-// import { useHistory } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 import Avatar from "@mui/material/Avatar";
@@ -24,7 +23,6 @@ import jwt_decode from "jwt-decode";
 const theme = createTheme();
 
 export default function SignInSide() {
-  // const history = useHistory();
   const navigate = useNavigate();
 
   const initialFormData = Object.freeze({
@@ -76,7 +74,6 @@ export default function SignInSide() {
         localStorage.setItem("refresh_token", res.data.refresh);
         axiosInstance.defaults.headers["Authorization"] =
           "JWT " + localStorage.getItem("access_token");
-        // history.push("/home");
         navigate("/home");
         console.log(res);
         console.log(res.data);

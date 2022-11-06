@@ -44,6 +44,7 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <TestHeader2 purpleBackground={purpleBackground} />
+        {/* {firstName ? <TestHeader2 purpleBackground={purpleBackground} /> : null} */}
         <Routes>
           <Route path="/register" element={<TestRegister />} />
           <Route path="/login" element={<TestLogin2 />} />
@@ -51,27 +52,6 @@ function App() {
           <Route path="/home" element={<LandingPage />} />
         </Routes>
       </BrowserRouter>
-
-      {/* <Router>
-        {firstName ? <TestHeader2 purpleBackground={purpleBackground} /> : null}
-        <Switch>
-        {firstName ? (
-          <Redirect from={["/register", "/login"]} to="/home" />
-        ) : null}
-          <Route exact path="/register">
-            <TestRegister purpleBackground={purpleBackground} />
-          </Route>
-          <Route exact path="/login">
-            <TestLogin2 purpleBackground={purpleBackground} />
-          </Route>
-          <Route exact path="/logout">
-            <Logout purpleBackground={purpleBackground} />
-          </Route>
-          <Route exact path="/home">
-            <LandingPage purpleBackground={purpleBackground} />
-          </Route>
-        </Switch>
-      </Router> */}
     </div>
   );
 }

@@ -4,7 +4,6 @@ import axiosInstance from "../axios";
 import { useNavigate } from "react-router-dom";
 
 export default function SignUp() {
-    // const history = useHistory();
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -18,7 +17,6 @@ export default function SignUp() {
         localStorage.removeItem("email");
         localStorage.removeItem("userName");
         axiosInstance.defaults.headers["Authorization"] = null;
-        // history.push("/login");
         navigate("/login")
     });
     return <div>Logout</div>;
