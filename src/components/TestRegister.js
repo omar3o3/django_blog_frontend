@@ -11,12 +11,12 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { useHistory } from "react-router-dom";
+// import { useHistory } from "react-router-dom";
 
 const theme = createTheme();
 
 export default function SignUp({ purpleBackground }) {
-  const history = useHistory();
+  // const history = useHistory();
   const initialFormData = Object.freeze({
     email: "",
     userName: "",
@@ -44,7 +44,7 @@ export default function SignUp({ purpleBackground }) {
         password: formData.password,
       })
       .then((res) => {
-        history.push("/login");
+        // history.push("/login");
         console.log(res);
         console.log(res.data);
       });

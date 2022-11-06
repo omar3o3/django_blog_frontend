@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -8,12 +8,12 @@ import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
-import Tooltip from "@mui/material/Tooltip";
+// import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 
 import Link from "@mui/material/Link";
 // import { NavLink } from "react-router-dom";
-import { Link as RouterLink, useHistory, NavLink } from "react-router-dom";
+import { Link as RouterLink, NavLink } from "react-router-dom";
 
 const pages = ["History", "Account"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
@@ -22,7 +22,7 @@ function ResponsiveAppBar({ purpleBackground }) {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
-  const history = useHistory();
+  // const history = useHistory();
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -47,7 +47,7 @@ function ResponsiveAppBar({ purpleBackground }) {
             variant="h6"
             noWrap
             component="a"
-            href="/"
+            href="/home"
             sx={{
               mr: 2,
               display: { xs: "none", md: "flex" },
@@ -108,7 +108,7 @@ function ResponsiveAppBar({ purpleBackground }) {
             variant="h5"
             noWrap
             component="a"
-            href="/"
+            href="/home"
             sx={{
               mr: 2,
               display: { xs: "flex", md: "none" },

@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import axiosInstance from "../axios";
-import { useHistory } from "react-router-dom";
+// import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function SignUp() {
-    const history = useHistory();
+    // const history = useHistory();
+    const navigate = useNavigate();
 
     useEffect(() => {
         const response = axiosInstance.post("users/logout/blacklist/", {
@@ -16,7 +18,8 @@ export default function SignUp() {
         localStorage.removeItem("email");
         localStorage.removeItem("userName");
         axiosInstance.defaults.headers["Authorization"] = null;
-        history.push("/login");
+        // history.push("/login");
+        navigate("/login")
     });
     return <div>Logout</div>;
 }

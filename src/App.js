@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from "react";
 import './App.css';
 
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  useHistory,
-  Redirect,
-} from "react-router-dom";
+// import {
+//   BrowserRouter as Router,
+//   Switch,
+//   Route,
+//   useHistory,
+//   Redirect,
+// } from "react-router-dom";
+
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 // import Register from "./components/Register";
 import Logout from "./components/Logout";
@@ -18,7 +20,7 @@ import LandingPage from "./components/LandingPage";
 
 function App() {
 
-  let history = useHistory();
+  // let history = useHistory();
 
   let firstName = localStorage.getItem("firstName");
   let lastName = localStorage.getItem("lastName");
@@ -40,7 +42,17 @@ function App() {
 
   return (
     <div className="App">
-      <Router>
+      <BrowserRouter>
+        <TestHeader2 purpleBackground={purpleBackground} />
+        <Routes>
+          <Route path="/register" element={<TestRegister />} />
+          <Route path="/login" element={<TestLogin2 />} />
+          <Route path="/logout" element={<Logout />} />
+          <Route path="/home" element={<LandingPage />} />
+        </Routes>
+      </BrowserRouter>
+
+      {/* <Router>
         {firstName ? <TestHeader2 purpleBackground={purpleBackground} /> : null}
         <Switch>
         {firstName ? (
@@ -59,7 +71,7 @@ function App() {
             <LandingPage purpleBackground={purpleBackground} />
           </Route>
         </Switch>
-      </Router>
+      </Router> */}
     </div>
   );
 }
