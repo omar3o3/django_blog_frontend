@@ -44,6 +44,11 @@ export default function SignInSide() {
 //     console.log(formData.password);
 //   };
 
+//   if (!localStorage.getItem("username")) {
+//     // console.log("not logged in");
+//     history.push("/testrun")
+//   }
+
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(formData);
@@ -57,6 +62,13 @@ export default function SignInSide() {
         const decodedData = jwt_decode(res.data.access);
         // console.log(decodedData.firstName);
         // console.log(res.data.access);
+        localStorage.setItem("firstName", decodedData.firstName);
+        localStorage.setItem("lastName", decodedData.lastName);
+        localStorage.setItem("email", decodedData.email);
+        localStorage.setItem("userName", decodedData.userName);
+
+        
+
         localStorage.setItem("access_token", res.data.access);
         localStorage.setItem("refresh_token", res.data.refresh);
         axiosInstance.defaults.headers["Authorization"] =

@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 // import Register from "./components/Register";
 // import Login from "./components/Login";
-// import Logout from "./components/Logout";
+import Logout from "./components/Logout";
 // import Header from "./components/Header";
 // import TestLogin from "./components/TestLogin";
 // import TestHeader from "./components/TestHeader";
@@ -38,9 +38,9 @@ function App() {
           <Route path="/login">
             <TestLogin2 />
           </Route>
-          {/* <Route path="/logout">
+          <Route path="/logout">
             <Logout />
-          </Route> */}
+          </Route>
         </Switch>
       </Router>
     </div>
