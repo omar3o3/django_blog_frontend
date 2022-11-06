@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react";
 import './App.css';
 
+import { Router } from "react-router";
+import { createBrowserHistory } from "history";
+
 import {
-  BrowserRouter as Router,
+  // BrowserRouter as Router,
   Switch,
   Route,
   useHistory,
@@ -18,7 +21,8 @@ import LandingPage from "./components/LandingPage";
 
 function App() {
 
-  let history = useHistory();
+  // let history = useHistory();
+  const history = createBrowserHistory();
 
   let firstName = localStorage.getItem("firstName");
   let lastName = localStorage.getItem("lastName");
@@ -40,12 +44,12 @@ function App() {
 
   return (
     <div className="App">
-      <Router>
+      <Router history={history}>
         {firstName ? <TestHeader2 purpleBackground={purpleBackground} /> : null}
         <Switch>
-        {firstName ? (
-          <Redirect from={["/register", "/login"]} to="/home" />
-        ) : null}
+          {firstName ? (
+            <Redirect from={["/register", "/login"]} to="/home" />
+          ) : null}
           <Route exact path="/register">
             <TestRegister purpleBackground={purpleBackground} />
           </Route>

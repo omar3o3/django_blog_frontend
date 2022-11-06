@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axiosInstance from "../axios";
-import { useHistory } from "react-router-dom";
+// import { useHistory } from "react-router-dom";
 
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
@@ -20,10 +20,15 @@ import signInImage from "../images/signInImage.jpg";
 
 import jwt_decode from "jwt-decode";
 
+import { createBrowserHistory } from "history";
+
 const theme = createTheme();
 
 export default function SignInSide() {
-  const history = useHistory();
+
+  // const history = useHistory();
+  const history = createBrowserHistory();
+
   const initialFormData = Object.freeze({
     email: "",
     password: "",
