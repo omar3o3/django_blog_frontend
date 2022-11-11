@@ -22,7 +22,7 @@ import jwt_decode from "jwt-decode";
 
 const theme = createTheme();
 
-export default function SignInSide() {
+export default function SignInSide({ purpleBackground, setLoggedState }) {
   const navigate = useNavigate();
 
   const initialFormData = Object.freeze({
@@ -39,16 +39,16 @@ export default function SignInSide() {
     });
   };
 
-//   const handleSubmit = (e) => {
-//     e.preventDefault();
-//     console.log(formData.email);
-//     console.log(formData.password);
-//   };
+  //   const handleSubmit = (e) => {
+  //     e.preventDefault();
+  //     console.log(formData.email);
+  //     console.log(formData.password);
+  //   };
 
-//   if (!localStorage.getItem("username")) {
-//     // console.log("not logged in");
-//     history.push("/testrun")
-//   }
+  //   if (!localStorage.getItem("username")) {
+  //     // console.log("not logged in");
+  //     history.push("/testrun")
+  //   }
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -63,12 +63,13 @@ export default function SignInSide() {
         const decodedData = jwt_decode(res.data.access);
         // console.log(decodedData.firstName);
         // console.log(res.data.access);
+
+        setLoggedState(true);
+
         localStorage.setItem("firstName", decodedData.firstName);
         localStorage.setItem("lastName", decodedData.lastName);
         localStorage.setItem("email", decodedData.email);
         localStorage.setItem("userName", decodedData.userName);
-
-        
 
         localStorage.setItem("access_token", res.data.access);
         localStorage.setItem("refresh_token", res.data.refresh);
@@ -148,7 +149,7 @@ export default function SignInSide() {
                 fullWidth
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}
-                style={{ background: "#9c27b0" }}
+                style={{ background: purpleBackground }}
               >
                 Sign In
               </Button>
