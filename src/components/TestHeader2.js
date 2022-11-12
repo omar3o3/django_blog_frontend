@@ -11,6 +11,8 @@ import Button from "@mui/material/Button";
 // import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 
+import LogoutIcon from "@mui/icons-material/Logout";
+
 import Link from "@mui/material/Link";
 import { Link as RouterLink, NavLink } from "react-router-dom";
 
@@ -140,7 +142,8 @@ function ResponsiveAppBar({ purpleBackground }) {
             to="/logout"
             // onClick={}
           >
-            Log out
+            {/* Log out */}
+            <LogoutIcon color="white"/>
           </Button>
         </Toolbar>
       </Container>

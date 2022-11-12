@@ -3,6 +3,7 @@ import axiosInstance from "../axios";
 // import { useHistory } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
+
 export default function SignUp({ setLoggedState }) {
   const navigate = useNavigate();
 

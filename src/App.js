@@ -20,8 +20,6 @@ import LandingPage from "./components/LandingPage";
 
 function App() {
 
-  // let history = useHistory();
-  
   // let firstName = localStorage.getItem("firstName");
   // let lastName = localStorage.getItem("lastName");
   // let email = localStorage.getItem("email");
@@ -43,16 +41,6 @@ function App() {
 
   const purpleBackground = "#9c27b0";
   // const purpleBackground = "#A58EA5";
-
-  // if (!firstName) return <TestLogin2/>;
-  // useEffect(() => {
-  //   if(firstName) {
-  //     // history.push("/home");
-  //     <Router>
-  //       <Redirect to="/home" />;
-  //     </Router>
-  //   }
-  // }, []);
 
   return (
     <div className="App">
