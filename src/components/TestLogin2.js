@@ -155,12 +155,13 @@ export default function SignInSide({ purpleBackground, setLoggedState, mainBlack
               >
                 Sign In
               </Button>
-              <Grid container>
+              <Grid container display="flex" justifyContent="center">
                 <Grid item>
                   <Link
+                    align="center"
                     href="/register"
                     variant="body2"
-                    sx={{color: "light blue" }}
+                    sx={{ color: "light blue" }}
                   >
                     {"Don't have an account? Sign Up"}
                   </Link>
