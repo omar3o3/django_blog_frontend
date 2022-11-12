@@ -81,15 +81,25 @@ export default function SignInSide({ purpleBackground, setLoggedState, mainBlack
           md={7}
           sx={{
             backgroundImage: `url(${signInImage})`,
-            backgroundColor: (t) =>
-              t.palette.mode === "light"
-                ? t.palette.grey[50]
-                : t.palette.grey[900],
+            // backgroundColor: (t) =>
+            //   t.palette.mode === "light"
+            //     ? t.palette.grey[50]
+            //     : t.palette.grey[900],
+            // backgroundColor: 'black',
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
         />
-        <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+        <Grid
+          item
+          xs={12}
+          sm={8}
+          md={5}
+          component={Paper}
+          elevation={6}
+          square
+          sx={{ backgroundColor: "black" }}
+        >
           <Box
             sx={{
               my: 8,
@@ -97,21 +107,23 @@ export default function SignInSide({ purpleBackground, setLoggedState, mainBlack
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
+              // backgroundColor: 'black',
             }}
           >
-            <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
+            <Avatar sx={{ m: 1, bgcolor: purpleBackground }}>
               <LockOutlinedIcon />
             </Avatar>
-            <Typography component="h1" variant="h5">
+            <Typography component="h1" variant="h5" sx={{ color: "white" }}>
               Sign in
             </Typography>
             <Box
               component="form"
               noValidate
               onSubmit={handleSubmit}
-              sx={{ mt: 1 }}
+              sx={{ mt: 1, color: "white" }}
             >
               <TextField
+                sx={{ backgroundColor: "white" }}
                 margin="normal"
                 required
                 fullWidth
@@ -123,6 +135,7 @@ export default function SignInSide({ purpleBackground, setLoggedState, mainBlack
                 onChange={handleChange}
               />
               <TextField
+                sx={{ backgroundColor: "white" }}
                 margin="normal"
                 required
                 fullWidth
@@ -144,7 +157,11 @@ export default function SignInSide({ purpleBackground, setLoggedState, mainBlack
               </Button>
               <Grid container>
                 <Grid item>
-                  <Link href="/register" variant="body2">
+                  <Link
+                    href="/register"
+                    variant="body2"
+                    sx={{color: "light blue" }}
+                  >
                     {"Don't have an account? Sign Up"}
                   </Link>
                 </Grid>
