@@ -1,4 +1,5 @@
 import React from 'react'
+import { useNavigate } from "react-router-dom";
 
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
@@ -8,9 +9,10 @@ import Fab from "@mui/material/Fab";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 function LandingPage({ purpleBackground, mainBlackBackground }) {
-  const handleCreate = () => {
-    console.log("hi");
-  };
+  // const handleCreate = () => {
+  //   console.log("hi");
+  // };
+  const navigate = useNavigate()
 
   const theme = createTheme({
     palette: {
@@ -44,7 +46,7 @@ function LandingPage({ purpleBackground, mainBlackBackground }) {
                 aria-label="add"
                 style={FabStyle}
                 // size="large"
-                onClick={handleCreate}
+                onClick={()=> navigate("/create-post")}
               >
                 <CreateIcon />
               </Fab>

@@ -17,6 +17,7 @@ import TestHeader2 from "./components/TestHeader2";
 import TestLogin2 from "./components/TestLogin2";
 import TestRegister from "./components/TestRegister";
 import LandingPage from "./components/LandingPage";
+import CreatePost from "./components/CreatePost";
 
 function App() {
 
@@ -71,6 +72,15 @@ function App() {
             path="/home"
             element={
               <LandingPage
+                purpleBackground={purpleBackground}
+                mainBlackBackground={mainBlackBackground}
+              />
+            }
+          />
+          <Route
+            path="/create-post"
+            element={
+              <CreatePost
                 purpleBackground={purpleBackground}
                 mainBlackBackground={mainBlackBackground}
               />
