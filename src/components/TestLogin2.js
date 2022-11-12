@@ -22,7 +22,7 @@ import jwt_decode from "jwt-decode";
 
 const theme = createTheme();
 
-export default function SignInSide({ purpleBackground, setLoggedState }) {
+export default function SignInSide({ purpleBackground, setLoggedState, mainBlackBackground }) {
   const navigate = useNavigate();
 
   const initialFormData = Object.freeze({
@@ -38,17 +38,6 @@ export default function SignInSide({ purpleBackground, setLoggedState }) {
       [e.target.name]: e.target.value.trim(),
     });
   };
-
-  //   const handleSubmit = (e) => {
-  //     e.preventDefault();
-  //     console.log(formData.email);
-  //     console.log(formData.password);
-  //   };
-
-  //   if (!localStorage.getItem("username")) {
-  //     // console.log("not logged in");
-  //     history.push("/testrun")
-  //   }
 
   const handleSubmit = (e) => {
     e.preventDefault();

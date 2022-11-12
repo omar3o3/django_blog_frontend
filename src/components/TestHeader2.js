@@ -18,7 +18,7 @@ import { Link as RouterLink, NavLink } from "react-router-dom";
 
 const pages = ["History", "Account"];
 
-function ResponsiveAppBar({ purpleBackground }) {
+function ResponsiveAppBar({ purpleBackground, mainBlackBackground }) {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -38,7 +38,18 @@ function ResponsiveAppBar({ purpleBackground }) {
   };
 
   return (
-    <AppBar position="static" style={{ background: purpleBackground }}>
+    <AppBar
+      // position="static"
+      position="fixed"
+      // position="sticky"
+      style={{
+        background: mainBlackBackground,
+        boxShadow: `0px 10px 20px ${purpleBackground}`,
+        // height: "3rem",
+        // marginBottom: '10rem',
+        // position:"sticky",
+      }}
+    >
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Typography
@@ -48,6 +59,7 @@ function ResponsiveAppBar({ purpleBackground }) {
             href="/home"
             sx={{
               mr: 2,
+              // mb: 10,
               display: { xs: "none", md: "flex" },
               fontFamily: "monospace",
               fontWeight: 700,
@@ -143,7 +155,7 @@ function ResponsiveAppBar({ purpleBackground }) {
             // onClick={}
           >
             {/* Log out */}
-            <LogoutIcon color="white"/>
+            <LogoutIcon color="white" />
           </Button>
         </Toolbar>
       </Container>

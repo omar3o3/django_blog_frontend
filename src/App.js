@@ -39,16 +39,17 @@ function App() {
 
   const [loggedInState, setLoggedState] = useState(firstNameState);
 
-  const purpleBackground = "#9c27b0";
-  // const purpleBackground = "#A58EA5";
+  const purpleBackground = "#813772";
+  const mainBlackBackground = "#000000";
 
   return (
     <div className="App">
       <BrowserRouter>
-        {/* <TestHeader2 purpleBackground={purpleBackground} /> */}
-        {/* {firstName ? <TestHeader2 purpleBackground={purpleBackground} /> : null} */}
         {loggedInState ? (
-          <TestHeader2 purpleBackground={purpleBackground} />
+          <TestHeader2
+            purpleBackground={purpleBackground}
+            mainBlackBackground={mainBlackBackground}
+          />
         ) : null}
         <Routes>
           <Route path="/register" element={<TestRegister />} />
@@ -57,6 +58,7 @@ function App() {
             element={
               <TestLogin2
                 purpleBackground={purpleBackground}
+                mainBlackBackground={mainBlackBackground}
                 setLoggedState={setLoggedState}
               />
             }
@@ -65,7 +67,15 @@ function App() {
             path="/logout"
             element={<Logout setLoggedState={setLoggedState} />}
           />
-          <Route path="/home" element={<LandingPage />} />
+          <Route
+            path="/home"
+            element={
+              <LandingPage
+                purpleBackground={purpleBackground}
+                mainBlackBackground={mainBlackBackground}
+              />
+            }
+          />
         </Routes>
       </BrowserRouter>
     </div>

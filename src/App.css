@@ -1,4 +1,15 @@
-.App {
+/* backgroundColor: */
+body {
+  background-color: black;
+  /* text-align: center; */
+}
+
+.beneathAppBar{
+  margin-top: 5rem
+}
+
+
+/* .App {
   text-align: center;
 }
 
@@ -35,4 +46,4 @@
   to {
     transform: rotate(360deg);
   }
-}
+} */
