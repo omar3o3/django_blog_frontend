@@ -123,24 +123,40 @@ export default function SignInSide({ purpleBackground, setLoggedState, mainBlack
               sx={{ mt: 1, color: "white" }}
             >
               <TextField
-                sx={{ backgroundColor: "white" }}
+                sx={{
+                  backgroundColor: "white",
+                  color: "white",
+                  mt: 2,
+                  px: 1,
+                  py: 1,
+                }}
                 margin="normal"
                 required
                 fullWidth
                 id="email"
-                label="Email Address"
+                label="&nbsp;&nbsp;Email Address"
                 name="email"
                 autoComplete="email"
                 autoFocus
                 onChange={handleChange}
+                color="secondary"
+                variant="standard"
               />
               <TextField
-                sx={{ backgroundColor: "white" }}
+                sx={{
+                  backgroundColor: "white",
+                  color: "white",
+                  mt: 2,
+                  px: 1,
+                  py: 1,
+                }}
+                variant="standard"
+                color="secondary"
                 margin="normal"
                 required
                 fullWidth
                 name="password"
-                label="Password"
+                label="&nbsp;&nbsp;Password"
                 type="password"
                 id="password"
                 autoComplete="current-password"
