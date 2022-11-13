@@ -61,6 +61,10 @@ function App() {
                 purpleBackground={purpleBackground}
                 mainBlackBackground={mainBlackBackground}
                 setLoggedState={setLoggedState}
+                setFirstNameState={setFirstNameState}
+                setLastNameState={setLastNameState}
+                setEmailState={setEmailState}
+                setUserNameState={setUserNameState}
               />
             }
           />
@@ -83,6 +87,10 @@ function App() {
               <CreatePost
                 purpleBackground={purpleBackground}
                 mainBlackBackground={mainBlackBackground}
+                firstNameState={firstNameState}
+                lastNameState={lastNameState}
+                emailState={emailState}
+                userNameState={userNameState}
               />
             }
           />

@@ -22,7 +22,15 @@ import jwt_decode from "jwt-decode";
 
 const theme = createTheme();
 
-export default function SignInSide({ purpleBackground, setLoggedState, mainBlackBackground }) {
+export default function SignInSide({
+  purpleBackground,
+  setLoggedState,
+  mainBlackBackground,
+  setFirstNameState,
+  setLastNameState,
+  setEmailState,
+  setUserNameState,
+}) {
   const navigate = useNavigate();
 
   const initialFormData = Object.freeze({
@@ -59,6 +67,11 @@ export default function SignInSide({ purpleBackground, setLoggedState, mainBlack
         localStorage.setItem("lastName", decodedData.lastName);
         localStorage.setItem("email", decodedData.email);
         localStorage.setItem("userName", decodedData.userName);
+
+        setFirstNameState(localStorage.getItem("firstName"));
+        setLastNameState(localStorage.getItem("lastName"));
+        setEmailState(localStorage.getItem("email"));
+        setUserNameState(localStorage.getItem("userName"));
 
         localStorage.setItem("access_token", res.data.access);
         localStorage.setItem("refresh_token", res.data.refresh);
