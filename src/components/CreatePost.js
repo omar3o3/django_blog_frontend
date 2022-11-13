@@ -1,4 +1,4 @@
-import React , {useState} from 'react'
+import React, { useState } from "react";
 
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
@@ -6,13 +6,12 @@ import TextField from "@mui/material/TextField";
 import Fab from "@mui/material/Fab";
 import Button from "@mui/material/Button";
 
-
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 
 function CreatePost() {
-  // const [tagArrayState, setTagArrayState] = useState([]);
-  // const [tagFormState, setTagFormState] = useState(false);
-  const [tagState , setTagState] = useState("") 
+  const [titleState, setTitleState] = useState("");
+  const [contentState , setContentState] = useState("")
+  const [tagState, setTagState] = useState("");
 
   const FabStyle = {
     marginTop: "1%",
@@ -22,11 +21,16 @@ function CreatePost() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const tagList = tagState.split(/[# ]/).filter((x) => x !== "");
-    console.log(tagList);
-  }
+    // const tagList = tagState.split(/[# ]/).filter((x) => x !== "");
+    // const filteredTagList = tagList.filter((x) => x === x.startsWith('#'));
+    // console.log(tagList);
+    // console.log(filteredTagList);
 
-  // mystr.split(/[# ]/).filter(x => x!=='')
+    const tagList = tagState.split(' ')
+    console.log(titleState);
+    console.log(contentState);
+    console.log(tagList);
+  };
 
   return (
     <div className="beneathAppBar" style={{ marginBottom: "5%" }}>
@@ -53,7 +57,7 @@ function CreatePost() {
               label="&nbsp;&nbsp;Title..."
               name="title"
               autoFocus
-              // onChange={handleChange}
+              onChange={(e) => setTitleState(e.target.value)}
               color="secondary"
               variant="standard"
             />
@@ -78,7 +82,7 @@ function CreatePost() {
               label="&nbsp;&nbsp;Content..."
               name="content"
               autoFocus
-              // onChange={handleChange}
+              onChange={(e) => setContentState(e.target.value)}
               color="secondary"
               variant="standard"
               multiline
@@ -105,53 +109,17 @@ function CreatePost() {
                 onChange={(e) => setTagState(e.target.value)}
                 color="secondary"
                 variant="standard"
-                helperText="Begin each tag with #"
+                helperText="Tags must seperated with a space"
               />
             </Grid>
           </Grid>
           <Grid item>
             <Button type="submit">Submit</Button>
           </Grid>
-          {/* {tagFormState ? (
-          <Grid container justifyContent="flex-start">
-            <Grid item xs={3}>
-              <TextField
-                sx={{
-                  backgroundColor: "white",
-                  color: "white",
-                  mt: 2,
-                  px: 1,
-                  py: 1,
-                }}
-                style={{ marginLeft: "5rem" }}
-                margin="normal"
-                fullWidth
-                id="tag"
-                label="&nbsp;&nbsp;Tag..."
-                name="tag"
-                autoFocus
-                // onChange={handleChange}
-                color="secondary"
-                variant="standard"
-              />
-            </Grid>
-          </Grid>
-        ) : null} */}
         </Grid>
-        {/* <Box>
-        <Fab
-          color="secondary"
-          aria-label="add"
-          style={FabStyle}
-          // size="large"
-          onClick={() => setTagFormState((currentState) => !currentState)}
-        >
-          <AddCircleIcon />
-        </Fab>
-      </Box> */}
       </Box>
     </div>
   );
 }
 
-export default CreatePost
+export default CreatePost;
