@@ -30,6 +30,7 @@ export default function SignInSide({
   setLastNameState,
   setEmailState,
   setUserNameState,
+  setUserIdState,
 }) {
   const navigate = useNavigate();
 
@@ -67,11 +68,13 @@ export default function SignInSide({
         localStorage.setItem("lastName", decodedData.lastName);
         localStorage.setItem("email", decodedData.email);
         localStorage.setItem("userName", decodedData.userName);
+        localStorage.setItem("userId", decodedData.user_id);
 
         setFirstNameState(localStorage.getItem("firstName"));
         setLastNameState(localStorage.getItem("lastName"));
         setEmailState(localStorage.getItem("email"));
         setUserNameState(localStorage.getItem("userName"));
+        setUserIdState(localStorage.getItem('userId'));
 
         localStorage.setItem("access_token", res.data.access);
         localStorage.setItem("refresh_token", res.data.refresh);

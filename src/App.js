@@ -38,6 +38,10 @@ function App() {
     localStorage.getItem("userName")
   );
 
+    const [userIdState, setUserIdState] = useState(
+      localStorage.getItem("userId")
+    );
+
   const [loggedInState, setLoggedState] = useState(firstNameState);
 
   const purpleBackground = "#813772";
@@ -65,6 +69,7 @@ function App() {
                 setLastNameState={setLastNameState}
                 setEmailState={setEmailState}
                 setUserNameState={setUserNameState}
+                setUserIdState={setUserIdState}
               />
             }
           />

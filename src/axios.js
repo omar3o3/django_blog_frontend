@@ -7,7 +7,8 @@ const axiosInstance = axios.create({
   timeout: 5000,
   headers: {
     Authorization: localStorage.getItem("access_token")
-      ? "JWT " + localStorage.getItem("access_token")
+      ? // ? "JWT " + localStorage.getItem("access_token")
+        "Bearer " + localStorage.getItem("access_token")
       : null,
     "Content-Type": "application/json",
     accept: "application/json",
@@ -50,7 +51,7 @@ axiosInstance.interceptors.response.use(
 
         // exp date in token is expressed in seconds, while now() returns milliseconds:
         const now = Math.ceil(Date.now() / 1000);
-        console.log(tokenParts.exp);
+        // console.log(tokenParts.exp);
 
         if (tokenParts.exp > now) {
           return axiosInstance

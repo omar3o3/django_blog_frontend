@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axiosInstance from "../axios";
 import jwt_decode from "jwt-decode";
 
@@ -17,8 +17,17 @@ function CreatePost({
   userNameState,
 }) {
   const [titleState, setTitleState] = useState("");
-  const [contentState , setContentState] = useState("")
+  const [contentState, setContentState] = useState("");
   const [tagState, setTagState] = useState("");
+
+  // axiosInstance.get("blog-api/test-run", {
+  //   headers: {
+  //     Authorization: "Bearer " + localStorage.getItem("access_token"),
+  //   },
+  // })
+  useEffect(()=> {
+    axiosInstance.get("blog-api/test-run").then((resp) => console.log(resp));
+  }, [])
 
   const FabStyle = {
     marginTop: "1%",
@@ -29,10 +38,21 @@ function CreatePost({
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const tagList = tagState.split(' ')
+    const tagList = tagState.split(" ");
     console.log(tagList);
 
-
+    if (titleState !== "" && contentState !== "") {
+      axiosInstance.post(`/someURL`, {
+        userFirstName: firstNameState,
+        userLastName: lastNameState,
+        userEmail: emailState,
+        userUserName: userNameState,
+        title: titleState,
+        content: contentState,
+        tags: tagList,
+      });
+    }
+    //but else statement here to display alert saying user must provide title and content
   };
 
   return (
