@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import Box from "@mui/material/Box";
@@ -8,11 +8,16 @@ import CreateIcon from "@mui/icons-material/Create";
 import Fab from "@mui/material/Fab";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
+import axiosInstance from "../axios";
+
 function LandingPage({ purpleBackground, mainBlackBackground }) {
   // const handleCreate = () => {
   //   console.log("hi");
   // };
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+
+  const [dataState, setDataState] = useState(null);
+  const [userState, setUserState] = useState([]);
 
   const theme = createTheme({
     palette: {
@@ -32,6 +37,25 @@ function LandingPage({ purpleBackground, mainBlackBackground }) {
     position: "fixed",
   };
 
+  // axiosInstance.get("blog-api/test-run", {
+  //   headers: {
+  //     Authorization: "Bearer " + localStorage.getItem("access_token"),
+  //   },
+  // })
+  useEffect(() => {
+    axiosInstance
+      .get("blog-api/test-run")
+      .then((resp) => {setDataState(resp.data)});
+  }, []);
+
+  useEffect(() => {
+    axiosInstance
+      .get("users/get_users")
+      .then((resp) => setUserState(resp.data));
+  }, []);
+
+  // console.log(userState);
+
   return (
     <div className="beneathAppBar">
       <ThemeProvider theme={theme}>
@@ -39,6 +63,12 @@ function LandingPage({ purpleBackground, mainBlackBackground }) {
           <Grid>
             <Grid>
               <h1 style={{ color: "white", textAlign: "center" }}>Test Run</h1>
+              <h1 style={{ color: "white", textAlign: "center" }}>
+                {dataState}
+              </h1>
+              {userState.map((x) => (
+                <h1 style={{ color: "white", textAlign: "center" }}>{x.email}</h1>
+              ))}
             </Grid>
             <Box>
               <Fab
@@ -46,7 +76,7 @@ function LandingPage({ purpleBackground, mainBlackBackground }) {
                 aria-label="add"
                 style={FabStyle}
                 // size="large"
-                onClick={()=> navigate("/create-post")}
+                onClick={() => navigate("/create-post")}
               >
                 <CreateIcon />
               </Fab>
@@ -58,4 +88,4 @@ function LandingPage({ purpleBackground, mainBlackBackground }) {
   );
 }
 
-export default LandingPage
+export default LandingPage;

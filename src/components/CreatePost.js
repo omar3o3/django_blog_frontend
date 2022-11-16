@@ -15,19 +15,11 @@ function CreatePost({
   lastNameState,
   emailState,
   userNameState,
+  userIdState,
 }) {
   const [titleState, setTitleState] = useState("");
   const [contentState, setContentState] = useState("");
   const [tagState, setTagState] = useState("");
-
-  // axiosInstance.get("blog-api/test-run", {
-  //   headers: {
-  //     Authorization: "Bearer " + localStorage.getItem("access_token"),
-  //   },
-  // })
-  useEffect(()=> {
-    axiosInstance.get("blog-api/test-run").then((resp) => console.log(resp));
-  }, [])
 
   const FabStyle = {
     marginTop: "1%",
@@ -39,18 +31,32 @@ function CreatePost({
     e.preventDefault();
 
     const tagList = tagState.split(" ");
-    console.log(tagList);
+    // console.log(tagList);
 
+    // if (titleState !== "" && contentState !== "") {
+    //   axiosInstance.post(`/blog-api/create-post`, {
+    //     userFirstName: firstNameState,
+    //     userLastName: lastNameState,
+    //     userEmail: emailState,
+    //     userUserName: userNameState,
+    //     title: titleState,
+    //     content: contentState,
+    //     tags: tagList,
+    //   });
+    // }
     if (titleState !== "" && contentState !== "") {
-      axiosInstance.post(`/someURL`, {
-        userFirstName: firstNameState,
-        userLastName: lastNameState,
-        userEmail: emailState,
-        userUserName: userNameState,
-        title: titleState,
-        content: contentState,
-        tags: tagList,
-      });
+      axiosInstance
+        .post(`/blog-api/create-post`, {
+          blog_data: {
+            title: titleState,
+            content: contentState,
+            user: userIdState,
+          },
+          tag_data: {
+            tags: tagList,
+          },
+        })
+        .then((resp) => console.log(resp.data));
     }
     //but else statement here to display alert saying user must provide title and content
   };
