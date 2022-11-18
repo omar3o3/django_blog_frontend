@@ -33,17 +33,6 @@ function CreatePost({
     const tagList = tagState.split(" ");
     // console.log(tagList);
 
-    // if (titleState !== "" && contentState !== "") {
-    //   axiosInstance.post(`/blog-api/create-post`, {
-    //     userFirstName: firstNameState,
-    //     userLastName: lastNameState,
-    //     userEmail: emailState,
-    //     userUserName: userNameState,
-    //     title: titleState,
-    //     content: contentState,
-    //     tags: tagList,
-    //   });
-    // }
     if (titleState !== "" && contentState !== "") {
       axiosInstance
         .post(`/blog-api/create-post`, {
