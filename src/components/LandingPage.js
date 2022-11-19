@@ -17,8 +17,6 @@ import axiosInstance from "../axios";
 function LandingPage({ purpleBackground, mainBlackBackground }) {
   const navigate = useNavigate();
 
-  // const [dataState, setDataState] = useState(null);
-  // const [userState, setUserState] = useState([]);
   const [blogState, setBlogState] = useState([]);
 
   const theme = createTheme({
@@ -38,18 +36,6 @@ function LandingPage({ purpleBackground, mainBlackBackground }) {
     left: "auto",
     position: "fixed",
   };
-
-  // axiosInstance.get("blog-api/test-run", {
-  //   headers: {
-  //     Authorization: "Bearer " + localStorage.getItem("access_token"),
-  //   },
-  // })
-
-  // useEffect(() => {
-  //   axiosInstance
-  //     .get("users/get_users")
-  //     .then((resp) => setUserState(resp.data));
-  // }, []);
 
   useEffect(() => {
     axiosInstance
@@ -84,9 +70,6 @@ function LandingPage({ purpleBackground, mainBlackBackground }) {
                   xs={8}
                   key={blog.id}
                   sx={{ backgroundColor: "black" }}
-                  // sx={{ backgroundColor: "#353435"}}
-                  // sx={{ backgroundColor: "#353435", px: "1%" }}
-                  // sx={{ backgroundColor: "white", px: "1%" }}
                 >
                   <Card sx={{ minWidth: 275, boxShadow: 3 }} variant="outlined">
                     <CardContent sx={{ backgroundColor: "#353435" }}>
@@ -103,7 +86,6 @@ function LandingPage({ purpleBackground, mainBlackBackground }) {
                         component="div"
                         sx={{ color: "#FFFFFF" }}
                         align="center"
-                        // textDecoration: 'underline'
                       >
                         {blog.title}
                       </Typography>
@@ -123,7 +105,6 @@ function LandingPage({ purpleBackground, mainBlackBackground }) {
                       >
                         {blog.tagblog_set.map((tag) => (
                           <Typography
-                            // sx={{ mb: 1.5 }}
                             key={tag.id}
                             color="text.secondary"
                             fontSize=".8rem"
