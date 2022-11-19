@@ -12,6 +12,11 @@ import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 
+import LikerComp from './LikerComp'
+
+import ThumbUpIcon from "@mui/icons-material/ThumbUp";
+import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
+
 import axiosInstance from "../axios";
 
 function LandingPage({ purpleBackground, mainBlackBackground }) {
@@ -71,8 +76,15 @@ function LandingPage({ purpleBackground, mainBlackBackground }) {
                   key={blog.id}
                   sx={{ backgroundColor: "black" }}
                 >
-                  <Card sx={{ minWidth: 275, boxShadow: 3 }} variant="outlined">
-                    <CardContent sx={{ backgroundColor: "#353435" }}>
+                  <Card
+                    sx={{
+                      minWidth: 275,
+                      boxShadow: 3,
+                      backgroundColor: "#353435",
+                    }}
+                    variant="outlined"
+                  >
+                    <CardContent>
                       <Typography
                         sx={{ fontSize: 14, color: "#a6a6a6" }}
                         color="text.secondary"
@@ -115,9 +127,19 @@ function LandingPage({ purpleBackground, mainBlackBackground }) {
                         ))}
                       </Grid>
                     </CardContent>
-                    {/* <CardActions> */}
-                    {/* <Button size="small">Learn More</Button> */}
-                    {/* </CardActions> */}
+                    <LikerComp
+                      blogId={blog.id}
+                      purpleBackground={purpleBackground}
+                    />
+                    {/* <CardActions>
+                      <Button>
+                        <ThumbUpIcon />
+                        <ThumbUpOffAltIcon />
+                      </Button>
+                      <Button>
+                        <ThumbUpOffAltIcon />
+                      </Button>
+                    </CardActions> */}
                   </Card>
                 </Grid>
               ))}
