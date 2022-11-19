@@ -7,17 +7,19 @@ import Button from "@mui/material/Button";
 import CreateIcon from "@mui/icons-material/Create";
 import Fab from "@mui/material/Fab";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import Card from "@mui/material/Card";
+import CardActions from "@mui/material/CardActions";
+import CardContent from "@mui/material/CardContent";
+import Typography from "@mui/material/Typography";
 
 import axiosInstance from "../axios";
 
 function LandingPage({ purpleBackground, mainBlackBackground }) {
-  // const handleCreate = () => {
-  //   console.log("hi");
-  // };
   const navigate = useNavigate();
 
-  const [dataState, setDataState] = useState(null);
-  const [userState, setUserState] = useState([]);
+  // const [dataState, setDataState] = useState(null);
+  // const [userState, setUserState] = useState([]);
+  const [blogState, setBlogState] = useState([]);
 
   const theme = createTheme({
     palette: {
@@ -42,34 +44,25 @@ function LandingPage({ purpleBackground, mainBlackBackground }) {
   //     Authorization: "Bearer " + localStorage.getItem("access_token"),
   //   },
   // })
-  useEffect(() => {
-    axiosInstance
-      .get("blog-api/test-run")
-      .then((resp) => {setDataState(resp.data)});
-  }, []);
+
+  // useEffect(() => {
+  //   axiosInstance
+  //     .get("users/get_users")
+  //     .then((resp) => setUserState(resp.data));
+  // }, []);
 
   useEffect(() => {
     axiosInstance
-      .get("users/get_users")
-      .then((resp) => setUserState(resp.data));
+      .get("blog-api/get-blogs")
+      .then((resp) => setBlogState(resp.data));
   }, []);
-
-  // console.log(userState);
+  // console.log(blogState);
 
   return (
     <div className="beneathAppBar">
       <ThemeProvider theme={theme}>
         <Box>
           <Grid>
-            <Grid>
-              <h1 style={{ color: "white", textAlign: "center" }}>Test Run</h1>
-              <h1 style={{ color: "white", textAlign: "center" }}>
-                {dataState}
-              </h1>
-              {userState.map((x) => (
-                <h1 style={{ color: "white", textAlign: "center" }}>{x.email}</h1>
-              ))}
-            </Grid>
             <Box>
               <Fab
                 color="secondary"
@@ -82,6 +75,73 @@ function LandingPage({ purpleBackground, mainBlackBackground }) {
               </Fab>
             </Box>
           </Grid>
+          <Box>
+            {/* spacing={2} */}
+            <Grid container justifyContent="center">
+              {blogState.map((blog) => (
+                <Grid
+                  item
+                  xs={8}
+                  key={blog.id}
+                  sx={{ backgroundColor: "black" }}
+                  // sx={{ backgroundColor: "#353435"}}
+                  // sx={{ backgroundColor: "#353435", px: "1%" }}
+                  // sx={{ backgroundColor: "white", px: "1%" }}
+                >
+                  <Card sx={{ minWidth: 275, boxShadow: 3 }} variant="outlined">
+                    <CardContent sx={{ backgroundColor: "#353435" }}>
+                      <Typography
+                        sx={{ fontSize: 14, color: "#a6a6a6" }}
+                        color="text.secondary"
+                        gutterBottom
+                        align="right"
+                      >
+                        Posted by {blog.user}
+                      </Typography>
+                      <Typography
+                        variant="h5"
+                        component="div"
+                        sx={{ color: "#FFFFFF" }}
+                        align="center"
+                        // textDecoration: 'underline'
+                      >
+                        {blog.title}
+                      </Typography>
+                      <Typography
+                        variant="body2"
+                        paragraph
+                        sx={{ color: "#FFFFFF" }}
+                        fontSize="1.2rem"
+                      >
+                        {blog.content}
+                      </Typography>
+                      <Grid
+                        container
+                        direction="row"
+                        justifyContent="flex-start"
+                        alignItems="flex-start"
+                      >
+                        {blog.tagblog_set.map((tag) => (
+                          <Typography
+                            // sx={{ mb: 1.5 }}
+                            key={tag.id}
+                            color="text.secondary"
+                            fontSize=".8rem"
+                            sx={{ color: purpleBackground }}
+                          >
+                            #{tag.tag_title}&nbsp;&nbsp;
+                          </Typography>
+                        ))}
+                      </Grid>
+                    </CardContent>
+                    {/* <CardActions> */}
+                    {/* <Button size="small">Learn More</Button> */}
+                    {/* </CardActions> */}
+                  </Card>
+                </Grid>
+              ))}
+            </Grid>
+          </Box>
         </Box>
       </ThemeProvider>
     </div>
