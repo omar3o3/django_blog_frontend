@@ -10,9 +10,14 @@ import axiosInstance from "../axios";
 function LikerComp({ blogId, purpleBackground }) {
   const [likeState, setLikeState] = useState(false);
 
+  const handleLike = () => {
+    console.log(blogId)
+    setLikeState(true);
+  }
+
   return (
     <CardActions>
-      <Button sx={{ color: purpleBackground }} onClick={() => console.log(blogId)}>
+      <Button sx={{ color: purpleBackground }} onClick={() => handleLike()}>
         {likeState ? <ThumbUpIcon /> : <ThumbUpOffAltIcon />}
       </Button>
       {/* <Button>

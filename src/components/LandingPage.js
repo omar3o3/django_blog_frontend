@@ -14,9 +14,6 @@ import Typography from "@mui/material/Typography";
 
 import LikerComp from './LikerComp'
 
-import ThumbUpIcon from "@mui/icons-material/ThumbUp";
-import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
-
 import axiosInstance from "../axios";
 
 function LandingPage({ purpleBackground, mainBlackBackground }) {
@@ -117,7 +114,7 @@ function LandingPage({ purpleBackground, mainBlackBackground }) {
                       >
                         {blog.tagblog_set.map((tag) => (
                           <Typography
-                            key={tag.id}
+                            key={tag.tag_title}
                             color="text.secondary"
                             fontSize=".8rem"
                             sx={{ color: purpleBackground }}
@@ -130,16 +127,8 @@ function LandingPage({ purpleBackground, mainBlackBackground }) {
                     <LikerComp
                       blogId={blog.id}
                       purpleBackground={purpleBackground}
+                      key={blog.id}
                     />
-                    {/* <CardActions>
-                      <Button>
-                        <ThumbUpIcon />
-                        <ThumbUpOffAltIcon />
-                      </Button>
-                      <Button>
-                        <ThumbUpOffAltIcon />
-                      </Button>
-                    </CardActions> */}
                   </Card>
                 </Grid>
               ))}
