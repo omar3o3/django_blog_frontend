@@ -16,9 +16,37 @@ import CreateComments from "./CreateComments";
 // import ShowComments from "./ShowComments";
 
 function BlogCard({ blog, purpleBackground }) {
-
   const [createState, setCreateState] = useState(false);
   const hotPink = "#f20256";
+
+//   const styles = (theme) => ({
+//     container: {
+//       display: "flex",
+//       flexWrap: "wrap",
+//     },
+//     textField: {
+//       marginLeft: theme.spacing.unit,
+//       marginRight: theme.spacing.unit,
+//       width: 200,
+//     },
+
+//     cssLabel: {
+//       color: "green",
+//     },
+
+//     cssOutlinedInput: {
+//       "&$cssFocused $notchedOutline": {
+//         borderColor: `${theme.palette.primary.main} !important`,
+//       },
+//     },
+
+//     cssFocused: {},
+
+//     notchedOutline: {
+//       borderWidth: "1px",
+//       borderColor: "green !important",
+//     },
+//   });
 
   return (
     <Grid item xs={8} key={blog.id} sx={{ backgroundColor: "black" }}>
@@ -87,7 +115,6 @@ function BlogCard({ blog, purpleBackground }) {
             />
             <CardActions>
               <Button
-                // sx={{ color: "#f20256" }}
                 onClick={() => setCreateState((prevState) => !prevState)}
               >
                 {createState ? <ClearIcon /> : "Comment"}
@@ -95,16 +122,20 @@ function BlogCard({ blog, purpleBackground }) {
             </CardActions>
           </Box>
           {createState ? (
-              <TextField
-                placeholder="Your Comment..."
-                sx={{
-                    '& .MuiInputBase-root-MuiOutlinedInput-root':{
-                        backgroundColor: 'red'
-                    }
-                }}
-                margin="normal"
-                fullWidth
-              />
+            <TextField
+              className="textFieldComment"
+              placeholder="Your Comment..."
+              sx={{
+                "& .MuiInputBase-input": {
+                  color: "white",
+                },
+                "& .MuiOutlinedInput-notchedOutline": {
+                  borderColor: "lightblue",
+                },
+              }}
+              margin="normal"
+              fullWidth
+            />
           ) : null}
         </CardContent>
       </Card>
@@ -113,3 +144,23 @@ function BlogCard({ blog, purpleBackground }) {
 }
 
 export default BlogCard;
+
+                // "& .MuiOutlinedInput-input": {
+                //   // backgroundColor: "red",
+                //   // color: "red"
+                //   // borderColor: "red",
+                // },
+                // "& .MuiOutlinedInput-notchedOutline:focused": {
+                //   borderColor: "lightblue",
+                // },
+                // "& .Mui-focused": {
+                //   borderColor: "yellow !important",
+                // },
+                // "& .notchedOutline": {
+                //   borderColor: "purple !important",
+                // },
+                // "& .MuiInputBase": {
+                //   "& .Mui-focused": {
+                //     borderColor: "lightblue",
+                //   },
+                // },
