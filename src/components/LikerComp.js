@@ -7,22 +7,19 @@ import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
 
 import axiosInstance from "../axios";
 
-function LikerComp({ blogId, purpleBackground }) {
+function LikerComp({ blogId, hotPink, purpleBackground }) {
   const [likeState, setLikeState] = useState(false);
 
   const handleLike = () => {
-    console.log(blogId)
-    setLikeState(true);
-  }
+    console.log(blogId);
+    setLikeState((prevState) => !prevState);
+  };
 
   return (
     <CardActions>
-      <Button sx={{ color: purpleBackground }} onClick={() => handleLike()}>
+      <Button sx={{ color: hotPink }} onClick={() => handleLike()}>
         {likeState ? <ThumbUpIcon /> : <ThumbUpOffAltIcon />}
       </Button>
-      {/* <Button>
-        <ThumbUpOffAltIcon />
-      </Button> */}
     </CardActions>
   );
 }

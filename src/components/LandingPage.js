@@ -3,16 +3,20 @@ import { useNavigate } from "react-router-dom";
 
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
-import Button from "@mui/material/Button";
+// import Button from "@mui/material/Button";
 import CreateIcon from "@mui/icons-material/Create";
 import Fab from "@mui/material/Fab";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
-import CardContent from "@mui/material/CardContent";
-import Typography from "@mui/material/Typography";
+// import Card from "@mui/material/Card";
+// import CardActions from "@mui/material/CardActions";
+// import CardContent from "@mui/material/CardContent";
+// import Typography from "@mui/material/Typography";
+// import TextField from "@mui/material/TextField";
 
-import LikerComp from './LikerComp'
+// import LikerComp from "./LikerComp";
+// import CreateComments from "./CreateComments";
+// import ShowComments from "./ShowComments";
+import BlogCard from "./BlogCard";
 
 import axiosInstance from "../axios";
 
@@ -46,6 +50,8 @@ function LandingPage({ purpleBackground, mainBlackBackground }) {
   }, []);
   // console.log(blogState);
 
+
+
   return (
     <div className="beneathAppBar">
       <ThemeProvider theme={theme}>
@@ -67,70 +73,7 @@ function LandingPage({ purpleBackground, mainBlackBackground }) {
             {/* spacing={2} */}
             <Grid container justifyContent="center">
               {blogState.map((blog) => (
-                <Grid
-                  item
-                  xs={8}
-                  key={blog.id}
-                  sx={{ backgroundColor: "black" }}
-                >
-                  <Card
-                    sx={{
-                      minWidth: 275,
-                      boxShadow: 3,
-                      backgroundColor: "#353435",
-                    }}
-                    variant="outlined"
-                  >
-                    <CardContent>
-                      <Typography
-                        sx={{ fontSize: 14, color: "#a6a6a6" }}
-                        color="text.secondary"
-                        gutterBottom
-                        align="right"
-                      >
-                        Posted by {blog.user}
-                      </Typography>
-                      <Typography
-                        variant="h5"
-                        component="div"
-                        sx={{ color: "#FFFFFF" }}
-                        align="center"
-                      >
-                        {blog.title}
-                      </Typography>
-                      <Typography
-                        variant="body2"
-                        paragraph
-                        sx={{ color: "#FFFFFF" }}
-                        fontSize="1.2rem"
-                      >
-                        {blog.content}
-                      </Typography>
-                      <Grid
-                        container
-                        direction="row"
-                        justifyContent="flex-start"
-                        alignItems="flex-start"
-                      >
-                        {blog.tagblog_set.map((tag) => (
-                          <Typography
-                            key={tag.tag_title}
-                            color="text.secondary"
-                            fontSize=".8rem"
-                            sx={{ color: purpleBackground }}
-                          >
-                            #{tag.tag_title}&nbsp;&nbsp;
-                          </Typography>
-                        ))}
-                      </Grid>
-                    </CardContent>
-                    <LikerComp
-                      blogId={blog.id}
-                      purpleBackground={purpleBackground}
-                      key={blog.id}
-                    />
-                  </Card>
-                </Grid>
+                <BlogCard blog={blog} purpleBackground ={purpleBackground}/>
               ))}
             </Grid>
           </Box>
