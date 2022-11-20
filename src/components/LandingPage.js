@@ -20,7 +20,7 @@ import BlogCard from "./BlogCard";
 
 import axiosInstance from "../axios";
 
-function LandingPage({ purpleBackground, mainBlackBackground }) {
+function LandingPage({ purpleBackground, mainBlackBackground, userIdState }) {
   const navigate = useNavigate();
 
   const [blogState, setBlogState] = useState([]);
@@ -50,8 +50,6 @@ function LandingPage({ purpleBackground, mainBlackBackground }) {
   }, []);
   // console.log(blogState);
 
-
-
   return (
     <div className="beneathAppBar">
       <ThemeProvider theme={theme}>
@@ -73,7 +71,11 @@ function LandingPage({ purpleBackground, mainBlackBackground }) {
             {/* spacing={2} */}
             <Grid container justifyContent="center">
               {blogState.map((blog) => (
-                <BlogCard blog={blog} purpleBackground ={purpleBackground}/>
+                <BlogCard
+                  blog={blog}
+                  purpleBackground={purpleBackground}
+                  userIdState={userIdState}
+                />
               ))}
             </Grid>
           </Box>

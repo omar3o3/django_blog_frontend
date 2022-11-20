@@ -83,6 +83,7 @@ function App() {
               <LandingPage
                 purpleBackground={purpleBackground}
                 mainBlackBackground={mainBlackBackground}
+                userIdState={userIdState}
               />
             }
           />

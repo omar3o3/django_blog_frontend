@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axiosInstance from "../axios";
 
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
@@ -15,38 +16,26 @@ import LikerComp from "./LikerComp";
 import CreateComments from "./CreateComments";
 // import ShowComments from "./ShowComments";
 
-function BlogCard({ blog, purpleBackground }) {
+function BlogCard({ blog, purpleBackground, userIdState }) {
   const [createState, setCreateState] = useState(false);
+  const [commentState, setCommentState] = useState("");
+  //   console.log(commentState);
+  const userId = localStorage.getItem("userId");
+
   const hotPink = "#f20256";
 
-//   const styles = (theme) => ({
-//     container: {
-//       display: "flex",
-//       flexWrap: "wrap",
-//     },
-//     textField: {
-//       marginLeft: theme.spacing.unit,
-//       marginRight: theme.spacing.unit,
-//       width: 200,
-//     },
-
-//     cssLabel: {
-//       color: "green",
-//     },
-
-//     cssOutlinedInput: {
-//       "&$cssFocused $notchedOutline": {
-//         borderColor: `${theme.palette.primary.main} !important`,
-//       },
-//     },
-
-//     cssFocused: {},
-
-//     notchedOutline: {
-//       borderWidth: "1px",
-//       borderColor: "green !important",
-//     },
-//   });
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    let intUserId = parseInt(userId);
+    if (commentState.trim() !== "") {
+      setCreateState(false);
+      axiosInstance.post(`blog-api/create-comment`, {
+        content: commentState,
+        blog: blog.id,
+        user: intUserId,
+      }).then(resp => console.log(resp.data));
+    }
+  };
 
   return (
     <Grid item xs={8} key={blog.id} sx={{ backgroundColor: "black" }}>
@@ -114,28 +103,30 @@ function BlogCard({ blog, purpleBackground }) {
               hotPink={hotPink}
             />
             <CardActions>
-              <Button
-                onClick={() => setCreateState((prevState) => !prevState)}
-              >
+              <Button onClick={() => setCreateState((prevState) => !prevState)}>
                 {createState ? <ClearIcon /> : "Comment"}
               </Button>
             </CardActions>
           </Box>
           {createState ? (
-            <TextField
-              className="textFieldComment"
-              placeholder="Your Comment..."
-              sx={{
-                "& .MuiInputBase-input": {
-                  color: "white",
-                },
-                "& .MuiOutlinedInput-notchedOutline": {
-                  borderColor: "lightblue",
-                },
-              }}
-              margin="normal"
-              fullWidth
-            />
+            <Box component="form" onSubmit={handleSubmit}>
+              <TextField
+                className="textFieldComment"
+                placeholder="Your Comment..."
+                onChange={(e) => setCommentState(e.target.value)}
+                onSubmit={(e) => console.log(commentState)}
+                sx={{
+                  "& .MuiInputBase-input": {
+                    color: "white",
+                  },
+                  "& .MuiOutlinedInput-notchedOutline": {
+                    borderColor: "lightblue",
+                  },
+                }}
+                margin="normal"
+                fullWidth
+              />
+            </Box>
           ) : null}
         </CardContent>
       </Card>
@@ -145,22 +136,22 @@ function BlogCard({ blog, purpleBackground }) {
 
 export default BlogCard;
 
-                // "& .MuiOutlinedInput-input": {
-                //   // backgroundColor: "red",
-                //   // color: "red"
-                //   // borderColor: "red",
-                // },
-                // "& .MuiOutlinedInput-notchedOutline:focused": {
-                //   borderColor: "lightblue",
-                // },
-                // "& .Mui-focused": {
-                //   borderColor: "yellow !important",
-                // },
-                // "& .notchedOutline": {
-                //   borderColor: "purple !important",
-                // },
-                // "& .MuiInputBase": {
-                //   "& .Mui-focused": {
-                //     borderColor: "lightblue",
-                //   },
-                // },
+// "& .MuiOutlinedInput-input": {
+//   // backgroundColor: "red",
+//   // color: "red"
+//   // borderColor: "red",
+// },
+// "& .MuiOutlinedInput-notchedOutline:focused": {
+//   borderColor: "lightblue",
+// },
+// "& .Mui-focused": {
+//   borderColor: "yellow !important",
+// },
+// "& .notchedOutline": {
+//   borderColor: "purple !important",
+// },
+// "& .MuiInputBase": {
+//   "& .Mui-focused": {
+//     borderColor: "lightblue",
+//   },
+// },
