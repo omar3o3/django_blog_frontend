@@ -1,14 +1,6 @@
 import React, { useState, useEffect } from "react";
 import './App.css';
 
-// import {
-//   BrowserRouter as Router,
-//   Switch,
-//   Route,
-//   useHistory,
-//   Redirect,
-// } from "react-router-dom";
-
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 // import Register from "./components/Register";
@@ -18,6 +10,7 @@ import TestLogin2 from "./components/TestLogin2";
 import TestRegister from "./components/TestRegister";
 import LandingPage from "./components/LandingPage";
 import CreatePost from "./components/CreatePost";
+import DetailedBlogView from "./components/DetailedBlogView";
 
 function App() {
 
@@ -98,6 +91,15 @@ function App() {
                 emailState={emailState}
                 userNameState={userNameState}
                 userIdState={userIdState}
+              />
+            }
+          />
+          <Route
+            path="/post"
+            element={
+              <DetailedBlogView
+                purpleBackground={purpleBackground}
+                mainBlackBackground={mainBlackBackground}
               />
             }
           />

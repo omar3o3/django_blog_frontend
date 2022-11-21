@@ -3,19 +3,10 @@ import { useNavigate } from "react-router-dom";
 
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
-// import Button from "@mui/material/Button";
 import CreateIcon from "@mui/icons-material/Create";
 import Fab from "@mui/material/Fab";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-// import Card from "@mui/material/Card";
-// import CardActions from "@mui/material/CardActions";
-// import CardContent from "@mui/material/CardContent";
-// import Typography from "@mui/material/Typography";
-// import TextField from "@mui/material/TextField";
 
-// import LikerComp from "./LikerComp";
-// import CreateComments from "./CreateComments";
-// import ShowComments from "./ShowComments";
 import BlogCard from "./BlogCard";
 
 import axiosInstance from "../axios";
