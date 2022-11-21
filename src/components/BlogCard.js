@@ -61,7 +61,7 @@ function BlogCard({ blog, purpleBackground, userIdState }) {
             <Typography
               sx={{ fontSize: 14, color: "#a6a6a6" }}
               color="text.secondary"
-              gutterBottom
+            //   gutterBottom
               align="right"
             >
               Posted by {blog.user}
