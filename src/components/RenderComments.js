@@ -7,54 +7,33 @@ import CardContent from "@mui/material/CardContent";
 import Stack from "@mui/material/Stack";
 import Box from "@mui/material/Box";
 
-function RenderComments({ comment, user }) {
+function RenderComments({ comment, user, purpleBackground }) {
   return (
-    // <Grid item xs={12}>
-    //   <Card>
-    //     <CardContent style={{ paddingTop: ".5rem", paddingBottom: ".5rem" }}>
-    //       <Typography
-    //         sx={{ fontSize: 14, color: "#a6a6a6" }}
-    //         color="text.secondary"
-    //         //   gutterBottom
-    //         align="right"
-    //         spacing={1}
-    //       >
-    //         Posted by {user}
-    //       </Typography>
-    //       <Typography
-    //         variant="body2"
-    //         paragraph
-    //         // sx={{ color: "#FFFFFF" }}
-    //         fontSize="1.2rem"
-    //         style={{ margin: "0rem" }}
-    //       >
-    //         {comment.content}
-    //       </Typography>
-    //     </CardContent>
-    //   </Card>
-    //   {/* </Typography> */}
-    // </Grid>
-    <Box sx={{ width: "100%" }} style={{borderColor:'red'}}>
-    <Stack>
-      <Typography
-        sx={{ fontSize: 14, color: "#a6a6a6" }}
-        color="text.secondary"
-        //   gutterBottom
-        align="right"
-        spacing={1}
-      >
-        Posted by {user}
-      </Typography>
-      <Typography
-        variant="body2"
-        paragraph
-        // sx={{ color: "#FFFFFF" }}
-        fontSize="1.2rem"
-        style={{ margin: "0rem" }}
-      >
-        {comment.content}
-      </Typography>
-    </Stack>
+    <Box
+      sx={{ width: "100%", borderTop: 1, borderColor: purpleBackground }}
+      p={1}
+    >
+      <Stack>
+        <Typography
+          sx={{ fontSize: 14, color: "#a6a6a6" }}
+          color="text.secondary"
+          //   gutterBottom
+          align="right"
+          spacing={1}
+        >
+          Comment by {user}
+        </Typography>
+        <Typography
+          variant="body2"
+          paragraph
+          // sx={{ color: "#FFFFFF" }}
+          fontSize="1.2rem"
+          sx={{ color: "white" }}
+          style={{ margin: "0rem" }}
+        >
+          {comment.content}
+        </Typography>
+      </Stack>
     </Box>
   );
 }

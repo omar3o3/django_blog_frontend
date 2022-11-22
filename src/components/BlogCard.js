@@ -61,7 +61,7 @@ function BlogCard({ blog, purpleBackground, userIdState }) {
             <Typography
               sx={{ fontSize: 14, color: "#a6a6a6" }}
               color="text.secondary"
-            //   gutterBottom
+              //   gutterBottom
               align="right"
             >
               Posted by {blog.user}
@@ -112,13 +112,22 @@ function BlogCard({ blog, purpleBackground, userIdState }) {
                 purpleBackground={purpleBackground}
                 hotPink={hotPink}
               /> */}
-              {/* <CardActions>
-                <Button
-                  onClick={() => setCreateState((prevState) => !prevState)}
+              <CardActions>
+                <Grid
+                  container
+                  direction="row"
+                  justifyContent="flex-end"
+                  alignItems="flex-start"
                 >
-                  {createState ? <ClearIcon /> : "Comment"}
-                </Button>
-              </CardActions> */}
+                  {/* <Grid item> */}
+                  <Button
+                    onClick={() => setCreateState((prevState) => !prevState)}
+                  >
+                    {createState ? <ClearIcon /> : "Comment"}
+                  </Button>
+                  {/* </Grid> */}
+                </Grid>
+              </CardActions>
             </Box>
             {createState ? (
               <Box component="form" onSubmit={handleSubmit}>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import axiosInstance from "../axios";
-import RenderComments from './RenderComments'
+import RenderComments from "./RenderComments";
 
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
@@ -12,12 +12,16 @@ import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import TextField from "@mui/material/TextField";
 import CardActionArea from "@mui/material/CardActionArea";
+import ClearIcon from "@mui/icons-material/Clear";
 
 function DetailedBlogView({ purpleBackground }) {
   const location = useLocation();
   const blogId = location.state.blogId;
   //   const navigate = useNavigate()
   const [blogState, setBlogState] = useState(false);
+  const [createState, setCreateState] = useState(false);
+  const [commentState, setCommentState] = useState("");
+  const userId = localStorage.getItem("userId");
 
   useEffect(() => {
     axiosInstance
@@ -27,7 +31,21 @@ function DetailedBlogView({ purpleBackground }) {
       .catch((error) => console.log(error));
   }, []);
 
-  console.log(blogState);
+  //   console.log(blogState);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    let intUserId = parseInt(userId);
+    if (commentState.trim() !== "") {
+      setCreateState(false);
+      axiosInstance
+        .post(`blog-api/create-comment`, {
+          content: commentState,
+          blog: blogId,
+          user: intUserId,
+        })
+        .then((resp) => console.log(resp.data));
+    }
+  };
 
   return (
     <div className="beneathAppBar">
@@ -79,15 +97,58 @@ function DetailedBlogView({ purpleBackground }) {
                       color="text.secondary"
                       fontSize=".8rem"
                       sx={{ color: purpleBackground }}
-                      style={{marginBottom:".5rem"}}
+                      style={{ marginBottom: ".5rem" }}
                     >
                       #{tag.tag_title}&nbsp;&nbsp;
                     </Typography>
                   ))}
                 </Grid>
+                <Box
+                  component="span"
+                  m={1}
+                  display="flex"
+                  //   justifyContent="space-between"
+                  //   alignItems="center"
+                  justifyContent="flex-end"
+                  alignItems="flex-start"
+                >
+                  <CardActions>
+                    <Button
+                      onClick={() => setCreateState((prevState) => !prevState)}
+                    >
+                      {createState ? <ClearIcon /> : "Comment"}
+                    </Button>
+                  </CardActions>
+                </Box>
+                {createState ? (
+                  <Box component="form" onSubmit={handleSubmit}>
+                    <TextField
+                      className="textFieldComment"
+                      multiline
+                      placeholder="Your Comment..."
+                      onChange={(e) => setCommentState(e.target.value)}
+                      onSubmit={(e) => console.log(commentState)}
+                      sx={{
+                        "& .MuiInputBase-input": {
+                          color: "white",
+                        },
+                        "& .MuiOutlinedInput-notchedOutline": {
+                          borderColor: "lightblue",
+                        },
+                        width: "100%",
+                      }}
+                      margin="normal"
+                      fullWidth
+                    />
+                  </Box>
+                ) : null}
                 <Grid container>
                   {blogState.comment_set.map((comment) => (
-                    <RenderComments comment={comment} user={blogState.user}/>
+                    <RenderComments
+                      comment={comment}
+                      user={blogState.user}
+                      purpleBackground={purpleBackground}
+                    />
                   ))}
                 </Grid>
               </CardContent>
