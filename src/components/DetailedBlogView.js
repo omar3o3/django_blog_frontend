@@ -107,8 +107,6 @@ function DetailedBlogView({ purpleBackground }) {
                   component="span"
                   m={1}
                   display="flex"
-                  //   justifyContent="space-between"
-                  //   alignItems="center"
                   justifyContent="flex-end"
                   alignItems="flex-start"
                 >
@@ -122,24 +120,54 @@ function DetailedBlogView({ purpleBackground }) {
                 </Box>
                 {createState ? (
                   <Box component="form" onSubmit={handleSubmit}>
-                    <TextField
-                      className="textFieldComment"
-                      multiline
-                      placeholder="Your Comment..."
-                      onChange={(e) => setCommentState(e.target.value)}
-                      onSubmit={(e) => console.log(commentState)}
-                      sx={{
-                        "& .MuiInputBase-input": {
-                          color: "white",
-                        },
-                        "& .MuiOutlinedInput-notchedOutline": {
-                          borderColor: "lightblue",
-                        },
-                        width: "100%",
-                      }}
-                      margin="normal"
-                      fullWidth
-                    />
+                    <Grid
+                      component="span"
+                      //   m={1}
+                      display="flex"
+                      justifyContent="center"
+                      alignItems="flex-start"
+                      container
+                      spacing={3}
+                    >
+                      <Grid item xs={10}>
+                        <TextField
+                          className="textFieldComment"
+                          multiline
+                          placeholder="Your Comment..."
+                          onChange={(e) => setCommentState(e.target.value)}
+                          //   onSubmit={(e) => console.log(commentState)}
+                          sx={{
+                            "& .MuiInputBase-input": {
+                              color: "white",
+                            },
+                            "& .MuiOutlinedInput-notchedOutline": {
+                              borderColor: "lightblue",
+                            },
+                            width: "100%",
+                          }}
+                          margin="normal"
+                          fullWidth
+                        />
+                      </Grid>
+                      {/* <Grid
+                      component="span"
+                      //   m={1}
+                      display="flex"
+                      justifyContent="center"
+                      alignItems="flex-start"
+                    > */}
+                      <Grid item xs={2}>
+                        <Button
+                          type="submit"
+                          // fullWidth
+                          variant="contained"
+                          sx={{ mt: 3, mb: 2 }}
+                          style={{ background: purpleBackground }}
+                        >
+                          Submit
+                        </Button>
+                      </Grid>
+                    </Grid>
                   </Box>
                 ) : null}
                 <Grid container>

@@ -28,19 +28,6 @@ function BlogCard({ blog, purpleBackground, userIdState }) {
 
   const navigate = useNavigate()
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    let intUserId = parseInt(userId);
-    if (commentState.trim() !== "") {
-      setCreateState(false);
-      axiosInstance.post(`blog-api/create-comment`, {
-        content: commentState,
-        blog: blog.id,
-        user: intUserId,
-      }).then(resp => console.log(resp.data));
-    }
-  };
-
   const handleDetailedView = (e) => {
     // console.log(e.target)
     navigate('/post',{state:{blogId:blog.id}});
@@ -119,17 +106,10 @@ function BlogCard({ blog, purpleBackground, userIdState }) {
                   justifyContent="flex-end"
                   alignItems="flex-start"
                 >
-                  {/* <Grid item> */}
-                  <Button
-                    onClick={() => setCreateState((prevState) => !prevState)}
-                  >
-                    {createState ? <ClearIcon /> : "Comment"}
-                  </Button>
-                  {/* </Grid> */}
                 </Grid>
               </CardActions>
             </Box>
-            {createState ? (
+            {/* {createState ? (
               <Box component="form" onSubmit={handleSubmit}>
                 <TextField
                   className="textFieldComment"
@@ -148,7 +128,7 @@ function BlogCard({ blog, purpleBackground, userIdState }) {
                   fullWidth
                 />
               </Box>
-            ) : null}
+            ) : null} */}
           </CardContent>
         </Card>
       </CardActionArea>
