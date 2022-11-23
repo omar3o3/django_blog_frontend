@@ -109,26 +109,6 @@ function BlogCard({ blog, purpleBackground, userIdState }) {
                 </Grid>
               </CardActions>
             </Box>
-            {/* {createState ? (
-              <Box component="form" onSubmit={handleSubmit}>
-                <TextField
-                  className="textFieldComment"
-                  placeholder="Your Comment..."
-                  onChange={(e) => setCommentState(e.target.value)}
-                  onSubmit={(e) => console.log(commentState)}
-                  sx={{
-                    "& .MuiInputBase-input": {
-                      color: "white",
-                    },
-                    "& .MuiOutlinedInput-notchedOutline": {
-                      borderColor: "lightblue",
-                    },
-                  }}
-                  margin="normal"
-                  fullWidth
-                />
-              </Box>
-            ) : null} */}
           </CardContent>
         </Card>
       </CardActionArea>
