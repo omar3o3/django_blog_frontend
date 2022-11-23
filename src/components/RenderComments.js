@@ -26,7 +26,6 @@ function RenderComments({ comment, user, purpleBackground }) {
         <Typography
           variant="body2"
           paragraph
-          // sx={{ color: "#FFFFFF" }}
           fontSize="1.2rem"
           sx={{ color: "white" }}
           style={{ margin: "0rem" }}

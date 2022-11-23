@@ -133,23 +133,3 @@ function BlogCard({ blog, purpleBackground, userIdState }) {
 }
 
 export default BlogCard;
-
-// "& .MuiOutlinedInput-input": {
-//   // backgroundColor: "red",
-//   // color: "red"
-//   // borderColor: "red",
-// },
-// "& .MuiOutlinedInput-notchedOutline:focused": {
-//   borderColor: "lightblue",
-// },
-// "& .Mui-focused": {
-//   borderColor: "yellow !important",
-// },
-// "& .notchedOutline": {
-//   borderColor: "purple !important",
-// },
-// "& .MuiInputBase": {
-//   "& .Mui-focused": {
-//     borderColor: "lightblue",
-//   },
-// },

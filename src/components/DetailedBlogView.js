@@ -170,13 +170,6 @@ function DetailedBlogView({ purpleBackground }) {
                           fullWidth
                         />
                       </Grid>
-                      {/* <Grid
-                      component="span"
-                      //   m={1}
-                      display="flex"
-                      justifyContent="center"
-                      alignItems="flex-start"
-                    > */}
                       <Grid item xs={2}>
                         <Button
                           type="submit"
