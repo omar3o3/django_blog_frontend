@@ -22,16 +22,18 @@ function DetailedBlogView({ purpleBackground }) {
   const [createState, setCreateState] = useState(false);
   const [commentState, setCommentState] = useState("");
   const userId = localStorage.getItem("userId");
+  const [prevCommentsState, setPrevCommentsState] = useState([]);
 
   useEffect(() => {
     axiosInstance
       .get(`/blog-api/detailedBlogView/${blogId}`)
-      .then((resp) => setBlogState(resp.data))
-      //   .then((resp) => console.log(resp.data))
+      .then((resp) => {
+        setBlogState(resp.data);
+        setPrevCommentsState(resp.data.comment_set);
+      })
       .catch((error) => console.log(error));
   }, []);
 
-  //   console.log(blogState);
   const handleSubmit = (e) => {
     e.preventDefault();
     let intUserId = parseInt(userId);
@@ -43,9 +45,17 @@ function DetailedBlogView({ purpleBackground }) {
           blog: blogId,
           user: intUserId,
         })
-        .then((resp) => console.log(resp.data));
+        .then((resp) => resp.data)
+        .then((data) => {
+          let newComArr = [...prevCommentsState];
+          newComArr.push(data);
+          console.log(newComArr);
+          setPrevCommentsState(newComArr);
+        });
     }
   };
+
+  //   console.log(prevCommentsState)
 
   return (
     <div className="beneathAppBar">
@@ -171,8 +181,9 @@ function DetailedBlogView({ purpleBackground }) {
                   </Box>
                 ) : null}
                 <Grid container>
-                  {blogState.comment_set.map((comment) => (
+                  {prevCommentsState.map((comment) => (
                     <RenderComments
+                      key={comment.content}
                       comment={comment}
                       user={blogState.user}
                       purpleBackground={purpleBackground}
