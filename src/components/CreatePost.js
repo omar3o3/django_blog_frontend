@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axiosInstance from "../axios";
 import jwt_decode from "jwt-decode";
+import { useNavigate } from "react-router-dom";
 
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
@@ -20,6 +21,8 @@ function CreatePost({
   const [titleState, setTitleState] = useState("");
   const [contentState, setContentState] = useState("");
   const [tagState, setTagState] = useState("");
+
+  const navigate = useNavigate();
 
   const FabStyle = {
     marginTop: "1%",
@@ -45,7 +48,9 @@ function CreatePost({
             tags: tagList,
           },
         })
-        .then((resp) => console.log(resp.data));
+        .then((resp) => navigate("/home"))
+        .catch(error => console.error(error.response.data));
+        // make this into a window alert
     }
     //but else statement here to display alert saying user must provide title and content
   };
