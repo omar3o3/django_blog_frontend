@@ -53,21 +53,38 @@ function BlogCard({ blog, purpleBackground, userIdState }) {
             >
               Posted by {blog.user}
             </Typography>
-            <Typography
-              variant="h5"
-              component="div"
-              sx={{ color: "#FFFFFF" }}
-              align="center"
+            <Box
+            //   sx={{
+            //     // width: "100%",
+            //     borderBottom: 1,
+            //     borderColor: purpleBackground,
+            //   }}
             >
-              {blog.title}
-            </Typography>
+              <Typography
+                variant="h5"
+                component="div"
+                sx={{ color: "#FFFFFF" }}
+                align="center"
+              >
+                {blog.title}
+              </Typography>
+              <div
+                style={{
+                  background: purpleBackground,
+                  margin: "auto",
+                  height: "1px",
+                    width: `${blog.title.length > 40 ? 40 : blog.title.length}rem`,
+                  marginBottom: "1rem",
+                }}
+              />
+            </Box>
             <Typography
               variant="body2"
               paragraph
               sx={{ color: "#FFFFFF" }}
-              fontSize="1.2rem"
+              fontSize="1rem"
             >
-              {blog.content}
+              {blog.content.slice(0, 200).trimEnd()}...
             </Typography>
             <Grid
               container
@@ -105,8 +122,7 @@ function BlogCard({ blog, purpleBackground, userIdState }) {
                   direction="row"
                   justifyContent="flex-end"
                   alignItems="flex-start"
-                >
-                </Grid>
+                ></Grid>
               </CardActions>
             </Box>
           </CardContent>

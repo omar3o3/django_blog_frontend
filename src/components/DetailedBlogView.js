@@ -87,11 +87,22 @@ function DetailedBlogView({ purpleBackground }) {
                 >
                   {blogState.title}
                 </Typography>
+                <div
+                  style={{
+                    background: purpleBackground,
+                    margin: "auto",
+                    height: "1px",
+                    width: `${
+                      blogState.title.length > 40 ? 40 : blogState.title.length
+                    }rem`,
+                    marginBottom: "1.5rem",
+                  }}
+                />
                 <Typography
                   variant="body2"
                   paragraph
                   sx={{ color: "#FFFFFF" }}
-                  fontSize="1.2rem"
+                  fontSize="1rem"
                 >
                   {blogState.content}
                 </Typography>
