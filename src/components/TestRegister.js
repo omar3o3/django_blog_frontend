@@ -23,6 +23,12 @@ export default function SignUp({ purpleBackground }) {
     password: "",
   });
 
+    const darkTheme = createTheme({
+      palette: {
+        mode: "dark",
+      },
+    });
+
   const [formData, updateFormData] = useState(initialFormData);
 
   const handleChange = (e) => {
@@ -51,7 +57,8 @@ export default function SignUp({ purpleBackground }) {
   };
 
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={darkTheme}>
+      <CssBaseline />
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Box
@@ -137,6 +144,7 @@ export default function SignUp({ purpleBackground }) {
               type="submit"
               fullWidth
               variant="contained"
+              color="secondary"
               sx={{ mt: 3, mb: 2 }}
               style={{ background: purpleBackground }}
             >
