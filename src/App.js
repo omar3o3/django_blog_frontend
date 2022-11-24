@@ -11,6 +11,8 @@ import TestRegister from "./components/TestRegister";
 import LandingPage from "./components/LandingPage";
 import CreatePost from "./components/CreatePost";
 import DetailedBlogView from "./components/DetailedBlogView";
+import History from "./components/History";
+import Account from "./components/Account";
 
 function App() {
 
@@ -74,6 +76,26 @@ function App() {
             path="/home"
             element={
               <LandingPage
+                purpleBackground={purpleBackground}
+                mainBlackBackground={mainBlackBackground}
+                userIdState={userIdState}
+              />
+            }
+          />
+          <Route
+            path="/history"
+            element={
+              <History
+                purpleBackground={purpleBackground}
+                mainBlackBackground={mainBlackBackground}
+                userIdState={userIdState}
+              />
+            }
+          />
+          <Route
+            path="/account"
+            element={
+              <Account
                 purpleBackground={purpleBackground}
                 mainBlackBackground={mainBlackBackground}
                 userIdState={userIdState}
