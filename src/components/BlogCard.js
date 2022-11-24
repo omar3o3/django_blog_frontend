@@ -40,6 +40,8 @@ function BlogCard({ blog, purpleBackground, userIdState }) {
     let minute = UTChour.split(":")[1];
     if (hour > 12) {
       return `${hour - 12}:${minute}pm`;
+    } else if (hour === 0) {
+      return `12:${minute}am`;
     } else {
       return `${hour}:${minute}am`;
     }
@@ -52,13 +54,13 @@ function BlogCard({ blog, purpleBackground, userIdState }) {
     return `${splitYear[1]}/${splitYear[2]}/${splitYear[0]}`;
   };
 
-  const blogContentTrimmer = (content)=>{
-    if(content.length>200){
-        return blog.content.slice(0, 200).trimEnd() + '...';
-    }else{
-        return content
+  const blogContentTrimmer = (content) => {
+    if (content.length > 200) {
+      return blog.content.slice(0, 200).trimEnd() + "...";
+    } else {
+      return content;
     }
-  }
+  };
 
   return (
     <Grid item xs={8} key={blog.id} sx={{ backgroundColor: "black" }}>
