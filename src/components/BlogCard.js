@@ -52,6 +52,14 @@ function BlogCard({ blog, purpleBackground, userIdState }) {
     return `${splitYear[1]}/${splitYear[2]}/${splitYear[0]}`;
   };
 
+  const blogContentTrimmer = (content)=>{
+    if(content.length>200){
+        return blog.content.slice(0, 200).trimEnd() + '...';
+    }else{
+        return content
+    }
+  }
+
   return (
     <Grid item xs={8} key={blog.id} sx={{ backgroundColor: "black" }}>
       <CardActionArea onClick={handleDetailedView}>
@@ -110,7 +118,8 @@ function BlogCard({ blog, purpleBackground, userIdState }) {
               sx={{ color: "#FFFFFF" }}
               fontSize="1rem"
             >
-              {blog.content.slice(0, 200).trimEnd()}...
+              {/* {blog.content.slice(0, 200).trimEnd()}... */}
+              {blogContentTrimmer(blog.content)}
             </Typography>
             <Grid
               container
