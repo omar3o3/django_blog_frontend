@@ -55,6 +55,25 @@ function DetailedBlogView({ purpleBackground }) {
     }
   };
 
+  const dateConverter = (input) => {
+    let dateAndYearArr = input.split("T");
+    let UTChour = dateAndYearArr[1].split(".")[0];
+    let hour = parseInt(UTChour.split(":")[0]);
+    let minute = UTChour.split(":")[1];
+    if (hour > 12) {
+      return `${hour - 12}:${minute}pm`;
+    } else {
+      return `${hour}:${minute}am`;
+    }
+  };
+
+  const yearConverter = (input) => {
+    let dateAndYearArr = input.split("T");
+    let year = dateAndYearArr[0];
+    let splitYear = year.split("-");
+    return `${splitYear[1]}/${splitYear[2]}/${splitYear[0]}`;
+  };
+
   //   console.log(prevCommentsState)
 
   return (
@@ -71,14 +90,30 @@ function DetailedBlogView({ purpleBackground }) {
               variant="outlined"
             >
               <CardContent>
-                <Typography
-                  sx={{ fontSize: 14, color: "#a6a6a6" }}
-                  color="text.secondary"
-                  //   gutterBottom
-                  align="right"
+                <Grid
+                  container
+                  direction="row"
+                  justifyContent="space-between"
+                  alignItems="flex-start"
                 >
-                  Posted by {blogState.user}
-                </Typography>
+                  <Typography
+                    sx={{ fontSize: 14, color: "#a6a6a6" }}
+                    color="text.secondary"
+                    // gutterBottom
+                    align="left"
+                  >
+                    @{blogState.user}
+                  </Typography>
+                  <Typography
+                    sx={{ fontSize: 14, color: "#a6a6a6" }}
+                    color="text.secondary"
+                    //   gutterBottom
+                    align="right"
+                  >
+                    {dateConverter(blogState.nyc_time)}{" "}
+                    {yearConverter(blogState.nyc_time)}
+                  </Typography>
+                </Grid>
                 <Typography
                   variant="h5"
                   component="div"
