@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
-import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
 // import FormControlLabel from "@mui/material/FormControlLabel";
 // import Checkbox from "@mui/material/Checkbox";
@@ -14,13 +13,21 @@ import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
+
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import CssBaseline from "@mui/material/CssBaseline";
 
 import signInImage from "../images/signInImage.jpg";
 
 import jwt_decode from "jwt-decode";
 
 const theme = createTheme();
+
+const darkTheme = createTheme({
+  palette: {
+    mode: "dark",
+  },
+});
 
 export default function SignInSide({
   purpleBackground,
@@ -74,7 +81,7 @@ export default function SignInSide({
         setLastNameState(localStorage.getItem("lastName"));
         setEmailState(localStorage.getItem("email"));
         setUserNameState(localStorage.getItem("userName"));
-        setUserIdState(localStorage.getItem('userId'));
+        setUserIdState(localStorage.getItem("userId"));
 
         localStorage.setItem("access_token", res.data.access);
         localStorage.setItem("refresh_token", res.data.refresh);
@@ -87,7 +94,8 @@ export default function SignInSide({
   };
 
   return (
-    <ThemeProvider theme={theme}>
+    // <ThemeProvider theme={theme}>
+    <ThemeProvider theme={darkTheme}>
       <Grid container component="main" sx={{ height: "100vh" }}>
         <CssBaseline />
         <Grid
@@ -140,8 +148,8 @@ export default function SignInSide({
             >
               <TextField
                 sx={{
-                  backgroundColor: "white",
-                  color: "white",
+                  // backgroundColor: "white",
+                  // color: "white",
                   mt: 2,
                   px: 1,
                   py: 1,
@@ -160,8 +168,8 @@ export default function SignInSide({
               />
               <TextField
                 sx={{
-                  backgroundColor: "white",
-                  color: "white",
+                  // backgroundColor: "white",
+                  // color: "white",
                   mt: 2,
                   px: 1,
                   py: 1,
@@ -183,7 +191,8 @@ export default function SignInSide({
                 fullWidth
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}
-                style={{ background: purpleBackground }}
+                // style={{ background: purpleBackground }}
+                color="secondary"
               >
                 Sign In
               </Button>

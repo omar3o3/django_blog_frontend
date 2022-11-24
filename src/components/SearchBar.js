@@ -10,6 +10,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 
 function SearchBar() {
     const [searchOptionState, setSearchOptionState] = useState('User');
+    const [searchState, setSearchState] = useState("");
     const searchOptions = ["User", "Tag", "Blog Content"];
 
     const darkTheme = createTheme({
@@ -55,6 +56,8 @@ function SearchBar() {
             id="select-search-option"
             noValidate
             placeholder="what are you searching for?"
+            helperText = {searchOptionState ==='Tag' ? 'seperate each tag with a space' : null}
+            onChange={(e)=> setSearchState(e.target.value)}
             sx={{
               width: "40%",
             }}
