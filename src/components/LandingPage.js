@@ -8,8 +8,8 @@ import Fab from "@mui/material/Fab";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 import BlogCard from "./BlogCard";
-
 import axiosInstance from "../axios";
+import SearchBar from "./SearchBar";
 
 function LandingPage({ purpleBackground, mainBlackBackground, userIdState }) {
   const navigate = useNavigate();
@@ -58,6 +58,7 @@ function LandingPage({ purpleBackground, mainBlackBackground, userIdState }) {
               </Fab>
             </Box>
           </Grid>
+          <SearchBar/>
           <Box>
             {/* spacing={2} */}
             <Grid container justifyContent="center">
