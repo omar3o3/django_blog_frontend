@@ -29,6 +29,7 @@ function SearchBar() {
         axiosInstance.post(`/blog-api/search-${searchOptionState}`, {
           searchContent: searchState,
         });
+        //need to pass blog state down to this comp and set the new blog content to this
     };
 
   return (
