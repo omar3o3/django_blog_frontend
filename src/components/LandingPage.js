@@ -58,7 +58,7 @@ function LandingPage({ purpleBackground, mainBlackBackground, userIdState }) {
               </Fab>
             </Box>
           </Grid>
-          <SearchBar/>
+          <SearchBar setBlogState={setBlogState} />
           <Box>
             {/* spacing={2} */}
             <Grid container justifyContent="center">

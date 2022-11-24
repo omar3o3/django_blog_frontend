@@ -4,14 +4,14 @@ import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import MenuItem from "@mui/material/MenuItem";
 import Grid from "@mui/material/Grid";
-import Button from "@mui/material/Button"
+import Button from "@mui/material/Button";
 
 import axiosInstance from "../axios";
 
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 
-function SearchBar() {
+function SearchBar({ setBlogState }) {
   const [searchOptionState, setSearchOptionState] = useState("User");
   const [searchState, setSearchState] = useState("");
   const searchOptions = ["User", "Tag", "Blog Content"];
@@ -22,15 +22,21 @@ function SearchBar() {
     },
   });
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        // console.log(searchState);
-        // console.log(searchOptionState);
-        axiosInstance.post(`/blog-api/search-${searchOptionState}`, {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // console.log(searchState);
+    // console.log(searchOptionState);
+    axiosInstance
+      .post(
+        `/blog-api/search-${searchOptionState.toLowerCase().replace(" ", "-")}`,
+        {
           searchContent: searchState,
-        });
-        //need to pass blog state down to this comp and set the new blog content to this
-    };
+        }
+      )
+      .then((resp) => setBlogState(resp.data))
+    //   .catch((err) => console.error(err));
+    //   .catch((err) => console.error(err.response.data));
+  };
 
   return (
     <ThemeProvider theme={darkTheme}>
@@ -94,4 +100,3 @@ function SearchBar() {
 }
 
 export default SearchBar;
-
