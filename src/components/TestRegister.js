@@ -17,7 +17,7 @@ import { useNavigate } from "react-router-dom";
 const theme = createTheme();
 
 
-export default function SignUp({ purpleBackground }) {
+export default function SignUp({ purpleBackground, setLoggedState }) {
   // const history = useHistory();
   const navigate = useNavigate();
 
@@ -27,11 +27,11 @@ export default function SignUp({ purpleBackground }) {
     password: "",
   });
 
-    const darkTheme = createTheme({
-      palette: {
-        mode: "dark",
-      },
-    });
+  const darkTheme = createTheme({
+    palette: {
+      mode: "dark",
+    },
+  });
 
   const [formData, updateFormData] = useState(initialFormData);
 
@@ -45,20 +45,31 @@ export default function SignUp({ purpleBackground }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formData);
+    // console.log(formData);
 
     axiosInstance
       .post(`users/create-user`, {
         email: formData.email,
         user_name: formData.userName,
         password: formData.password,
+        first_name: formData.firstName,
+        last_name: formData.lastName,
       })
       .then((res) => {
         // history.push("/login");
-        console.log(res);
-        console.log(res.data);
+
+        localStorage.setItem("firstName", res.data.first_name);
+        localStorage.setItem("lastName", res.data.last_name);
+        localStorage.setItem("email", res.data.email);
+        localStorage.setItem("userName", res.data.user_name);
+        localStorage.setItem("userId", res.data.user_id);
+        setLoggedState(localStorage.getItem("firstName", res.data.first_name));
+
+        // console.log(res);
+        // console.log(res.data);
         navigate("/home");
-      });
+      })
+      .catch((err) => console.log(err));
   };
 
   return (

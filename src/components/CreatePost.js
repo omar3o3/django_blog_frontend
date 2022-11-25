@@ -23,6 +23,7 @@ function CreatePost({
   const [titleState, setTitleState] = useState("");
   const [contentState, setContentState] = useState("");
   const [tagState, setTagState] = useState("");
+  const userId = localStorage.getItem("userId");
 
   const navigate = useNavigate();
 
@@ -50,14 +51,14 @@ function CreatePost({
           blog_data: {
             title: titleState,
             content: contentState,
-            user: userIdState,
+            user: userId,
           },
           tag_data: {
             tags: tagList,
           },
         })
         .then((resp) => navigate("/home"))
-        .catch(error => console.error(error.response.data));
+        .catch((error) => console.error(error.response.data));
         // make this into a window alert
     }
     //but else statement here to display alert saying user must provide title and content

@@ -38,6 +38,8 @@ function App() {
     );
 
   const [loggedInState, setLoggedState] = useState(firstNameState);
+  // console.log(localStorage.getItem("firstName"));
+  // console.log(loggedInState === true);
 
   const purpleBackground = "#813772";
   const mainBlackBackground = "#000000";
@@ -52,7 +54,10 @@ function App() {
           />
         ) : null}
         <Routes>
-          <Route path="/register" element={<TestRegister />} />
+          <Route
+            path="/register"
+            element={<TestRegister setLoggedState={setLoggedState} />}
+          />
           <Route
             path="/login"
             element={
