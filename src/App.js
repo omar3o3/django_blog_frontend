@@ -13,6 +13,7 @@ import CreatePost from "./components/CreatePost";
 import DetailedBlogView from "./components/DetailedBlogView";
 import History from "./components/History";
 import Account from "./components/Account";
+import RedditData from "./components/RedditData";
 
 function App() {
 
@@ -120,6 +121,15 @@ function App() {
             path="/post"
             element={
               <DetailedBlogView
+                purpleBackground={purpleBackground}
+                mainBlackBackground={mainBlackBackground}
+              />
+            }
+          />
+          <Route
+            path="/reddit-trending"
+            element={
+              <RedditData
                 purpleBackground={purpleBackground}
                 mainBlackBackground={mainBlackBackground}
               />
