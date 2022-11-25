@@ -12,11 +12,15 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 // import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const theme = createTheme();
 
+
 export default function SignUp({ purpleBackground }) {
   // const history = useHistory();
+  const navigate = useNavigate();
+
   const initialFormData = Object.freeze({
     email: "",
     userName: "",
@@ -44,7 +48,7 @@ export default function SignUp({ purpleBackground }) {
     console.log(formData);
 
     axiosInstance
-      .post(`user/create/`, {
+      .post(`users/create-user`, {
         email: formData.email,
         user_name: formData.userName,
         password: formData.password,
@@ -53,6 +57,7 @@ export default function SignUp({ purpleBackground }) {
         // history.push("/login");
         console.log(res);
         console.log(res.data);
+        navigate("/home");
       });
   };
 
