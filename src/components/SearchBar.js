@@ -6,7 +6,11 @@ import MenuItem from "@mui/material/MenuItem";
 import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
 
-
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogContentText from "@mui/material/DialogContentText";
+import DialogTitle from "@mui/material/DialogTitle";
 
 import axiosInstance from "../axios";
 
@@ -17,12 +21,17 @@ function SearchBar({ setBlogState }) {
   const [searchOptionState, setSearchOptionState] = useState("User");
   const [searchState, setSearchState] = useState("");
   const searchOptions = ["User", "Tag", "Blog Content"];
+  const [dialogOpenState, setDialogOpenState] = React.useState(false);
 
   const darkTheme = createTheme({
     palette: {
       mode: "dark",
     },
   });
+
+  const handleClose = () => {
+    setDialogOpenState(false);
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -35,14 +44,10 @@ function SearchBar({ setBlogState }) {
           searchContent: searchState,
         }
       )
-      //   .then((resp) => setBlogState(resp.data))
       .then((resp) => {
-        console.log(resp.data)
-        // console.log(typeof resp.data);
-        // console.log(resp.data === "");
+        setBlogState(resp.data)
     })
-      .catch((err) => console.error(err));
-    //   .catch((err) => console.error(err.response.data));
+      .catch(() => setDialogOpenState(true));
   };
 
   return (
@@ -102,6 +107,29 @@ function SearchBar({ setBlogState }) {
           </Grid>
         </Box>
       </div>
+      {dialogOpenState ? (
+        <Dialog
+          open={dialogOpenState}
+          onClose={handleClose}
+          aria-labelledby="alert-dialog-title"
+          aria-describedby="alert-dialog-description"
+        >
+          {/* <DialogTitle id="alert-dialog-title">
+            {`${searchOptionState} `}
+          </DialogTitle> */}
+          <DialogContent>
+            <DialogContentText id="alert-dialog-description">
+              No results found with your search request.
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            {/* <Button onClick={handleClose}>Disagree</Button> */}
+            <Button onClick={handleClose} autoFocus>
+              Close
+            </Button>
+          </DialogActions>
+        </Dialog>
+      ) : null}
     </ThemeProvider>
   );
 }
