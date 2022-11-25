@@ -113,11 +113,6 @@ function App() {
               <CreatePost
                 purpleBackground={purpleBackground}
                 mainBlackBackground={mainBlackBackground}
-                firstNameState={firstNameState}
-                lastNameState={lastNameState}
-                emailState={emailState}
-                userNameState={userNameState}
-                userIdState={userIdState}
               />
             }
           />

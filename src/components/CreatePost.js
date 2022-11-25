@@ -13,13 +13,7 @@ import Button from "@mui/material/Button";
 
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 
-function CreatePost({
-  firstNameState,
-  lastNameState,
-  emailState,
-  userNameState,
-  userIdState,
-}) {
+function CreatePost() {
   const [titleState, setTitleState] = useState("");
   const [contentState, setContentState] = useState("");
   const [tagState, setTagState] = useState("");
