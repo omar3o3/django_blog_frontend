@@ -6,6 +6,8 @@ import MenuItem from "@mui/material/MenuItem";
 import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
 
+
+
 import axiosInstance from "../axios";
 
 import { ThemeProvider, createTheme } from "@mui/material/styles";
@@ -33,8 +35,13 @@ function SearchBar({ setBlogState }) {
           searchContent: searchState,
         }
       )
-      .then((resp) => setBlogState(resp.data))
-    //   .catch((err) => console.error(err));
+      //   .then((resp) => setBlogState(resp.data))
+      .then((resp) => {
+        console.log(resp.data)
+        // console.log(typeof resp.data);
+        // console.log(resp.data === "");
+    })
+      .catch((err) => console.error(err));
     //   .catch((err) => console.error(err.response.data));
   };
 
