@@ -127,7 +127,7 @@ function App() {
             }
           />
           <Route
-            path="/reddit-trending"
+            path="/reddit"
             element={
               <RedditData
                 purpleBackground={purpleBackground}

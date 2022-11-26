@@ -16,7 +16,7 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import Link from "@mui/material/Link";
 import { Link as RouterLink, NavLink } from "react-router-dom";
 
-const pages = ["History", "Account"];
+const pages = ["History", "Account", "Reddit"];
 
 function ResponsiveAppBar({ purpleBackground, mainBlackBackground }) {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
