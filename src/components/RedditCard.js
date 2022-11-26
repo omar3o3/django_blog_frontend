@@ -9,12 +9,16 @@ import Typography from "@mui/material/Typography";
 import CardActionArea from "@mui/material/CardActionArea";
 import Link from "@mui/material/Link";
 
+// import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+
 function RedditCard({ redditPost, purpleBackground }) {
   const navigate = useNavigate();
 
   const handleRedditView = () => {
     navigate(redditPost.link);
   };
+
+  console.log(redditPost.link);
 
   return (
     <Grid item xs={8} key={redditPost.title} sx={{ backgroundColor: "black" }}>
@@ -39,15 +43,22 @@ function RedditCard({ redditPost, purpleBackground }) {
             component="div"
             sx={{ color: "#FFFFFF" }}
             align="center"
+            // color="secondary"
           >
-            {/* <Link href={redditPost.link} target="_blank" rel="noopener">
-              {redditPost.title}
-            </Link> */}
-            <a href={redditPost.link}>
-              {redditPost.title}
-            </a>
+            <Box sx={{mt:2}}>
+              <Link
+                href={"https://" + redditPost.link}
+                target="_blank"
+                rel="noreferrer"
+                underline="hover"
+                // color="secondary"
+                sx={{color: "white"}}
+              >
+                {redditPost.title}
+              </Link>
+            </Box>
           </Typography>
-          <div
+          {/* <div
             style={{
               background: purpleBackground,
               margin: "auto",
@@ -57,7 +68,7 @@ function RedditCard({ redditPost, purpleBackground }) {
               }rem`,
               marginBottom: "1rem",
             }}
-          />
+          /> */}
           {/* <Typography
               variant="body2"
               paragraph

@@ -15,7 +15,7 @@ import Grid from "@mui/material/Grid";
 // import CardActionArea from "@mui/material/CardActionArea";
 
 function RedditData({ purpleBackground }) {
-  const [redditDataState, setRedditDataState] = useState([]);
+  const [redditDataState, setRedditDataState] = useState(false);
 
   useEffect(() => {
     axiosInstance
@@ -26,12 +26,15 @@ function RedditData({ purpleBackground }) {
   return (
     <div className="beneathAppBar">
       <Grid container justifyContent="center">
-        {redditDataState.map((redditPost) => (
-          <RedditCard
-            redditPost={redditPost}
-            purpleBackground={purpleBackground}
-          />
-        ))}
+        {redditDataState
+          ? redditDataState.map((redditPost) => (
+              <RedditCard
+                key={redditPost.title}
+                redditPost={redditPost}
+                purpleBackground={purpleBackground}
+              />
+            ))
+          : null}
       </Grid>
     </div>
   );
