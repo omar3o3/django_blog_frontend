@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import RedditCard from "./RedditCard";
+import ScrapCard from "./ScrapCard";
 
 import axiosInstance from "../axios";
 
@@ -19,11 +19,11 @@ function RedditData({ purpleBackground }) {
       <Grid container justifyContent="center">
         {twitterDataState
           ? twitterDataState.map((redditPost) => (
-              <RedditCard
+              <ScrapCard
                 key={redditPost.title}
                 redditPost={redditPost}
                 purpleBackground={purpleBackground}
-                typeOfData={'twitter'}
+                typeOfData={"twitter"}
               />
             ))
           : null}
