@@ -4,6 +4,7 @@ import ScrapCard from "./ScrapCard";
 import axiosInstance from "../axios";
 
 import Grid from "@mui/material/Grid";
+import CircularProgress from "@mui/material/CircularProgress";
 
 function RedditData({ purpleBackground }) {
   const [twitterDataState, setTwitterDataState] = useState(false);
@@ -17,16 +18,22 @@ function RedditData({ purpleBackground }) {
   return (
     <div className="beneathAppBar">
       <Grid container justifyContent="center">
-        {twitterDataState
-          ? twitterDataState.map((redditPost) => (
-              <ScrapCard
-                key={redditPost.title}
-                redditPost={redditPost}
-                purpleBackground={purpleBackground}
-                typeOfData={"twitter"}
-              />
-            ))
-          : null}
+        {twitterDataState ? (
+          twitterDataState.map((redditPost) => (
+            <ScrapCard
+              key={redditPost.title}
+              redditPost={redditPost}
+              purpleBackground={purpleBackground}
+              typeOfData={"twitter"}
+            />
+          ))
+        ) : (
+          <CircularProgress
+            // color="secondary"
+            size="5rem"
+            sx={{ mt: "10rem", color: "#1DA1F2" }}
+          />
+        )}
       </Grid>
     </div>
   );
