@@ -10,12 +10,13 @@ import Typography from "@mui/material/Typography";
 import CardActionArea from "@mui/material/CardActionArea";
 import Link from "@mui/material/Link";
 import RedditIcon from "@mui/icons-material/Reddit";
+import TwitterIcon from "@mui/icons-material/Twitter";
 
 
-function RedditCard({ redditPost, purpleBackground }) {
+function RedditCard({ redditPost, purpleBackground, typeOfData }) {
   const navigate = useNavigate();
 
-//   console.log(redditPost.link);
+  //   console.log(redditPost.link);
 
   return (
     <Grid item xs={8} key={redditPost.title} sx={{ backgroundColor: "black" }}>
@@ -50,11 +51,20 @@ function RedditCard({ redditPost, purpleBackground }) {
                 alignItems="center"
               >
                 <Button
-                  href={"https://" + redditPost.link}
+                  href={
+                    typeOfData === "reddit"
+                      ? 
+                        redditPost.link
+                      : redditPost.link
+                  }
                   target="_blank"
                   rel="noreferrer"
                 >
-                  <RedditIcon sx={{color:  "#FF4500"}} />
+                  {typeOfData === "reddit" ? (
+                    <RedditIcon sx={{ color: "#FF4500" }} />
+                  ) : (
+                    <TwitterIcon sx={{ color: "#1DA1F2" }} />
+                  )}
                 </Button>
               </Grid>
             </Box>

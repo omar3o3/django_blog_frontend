@@ -1,29 +1,29 @@
-import React , {useState , useEffect} from 'react'
-import RedditCard from './RedditCard'
+import React, { useState, useEffect } from "react";
+import RedditCard from "./RedditCard";
 
 import axiosInstance from "../axios";
 
 import Grid from "@mui/material/Grid";
 
 function RedditData({ purpleBackground }) {
-  const [redditDataState, setRedditDataState] = useState(false);
+  const [twitterDataState, setTwitterDataState] = useState(false);
 
   useEffect(() => {
     axiosInstance
-      .get("scrap-api/reddit-scrap")
-      .then((resp) => setRedditDataState(resp.data));
+      .get("scrap-api/twitter-scrap")
+      .then((resp) => setTwitterDataState(resp.data));
   }, []);
 
   return (
     <div className="beneathAppBar">
       <Grid container justifyContent="center">
-        {redditDataState
-          ? redditDataState.map((redditPost) => (
+        {twitterDataState
+          ? twitterDataState.map((redditPost) => (
               <RedditCard
                 key={redditPost.title}
                 redditPost={redditPost}
                 purpleBackground={purpleBackground}
-                typeOfData={"reddit"}
+                typeOfData={'twitter'}
               />
             ))
           : null}
@@ -32,4 +32,4 @@ function RedditData({ purpleBackground }) {
   );
 }
 
-export default RedditData
+export default RedditData;
