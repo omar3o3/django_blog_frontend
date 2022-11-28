@@ -10,7 +10,6 @@ import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
-import DialogTitle from "@mui/material/DialogTitle";
 
 import axiosInstance from "../axios";
 import { styled } from "@mui/material/styles";
@@ -56,8 +55,8 @@ function SearchBar({ setBlogState }) {
         }
       )
       .then((resp) => {
-        setBlogState(resp.data)
-    })
+        setBlogState(resp.data);
+      })
       .catch(() => setDialogOpenState(true));
   };
 
@@ -135,16 +134,12 @@ function SearchBar({ setBlogState }) {
           aria-labelledby="alert-dialog-title"
           aria-describedby="alert-dialog-description"
         >
-          {/* <DialogTitle id="alert-dialog-title">
-            {`${searchOptionState} `}
-          </DialogTitle> */}
           <DialogContent>
             <DialogContentText id="alert-dialog-description">
               No results found with your search request.
             </DialogContentText>
           </DialogContent>
           <DialogActions>
-            {/* <Button onClick={handleClose}>Disagree</Button> */}
             <Button onClick={handleClose} autoFocus>
               Close
             </Button>
