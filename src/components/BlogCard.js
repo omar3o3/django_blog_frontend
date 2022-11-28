@@ -113,7 +113,7 @@ function BlogCard({ blog, purpleBackground, userIdState }) {
               style={{
                 background: purpleBackground,
                 margin: "auto",
-                height: "1px",
+                height: "1.5px",
                 width: `${blog.title.length > 40 ? 40 : blog.title.length}rem`,
                 marginBottom: "1rem",
               }}
