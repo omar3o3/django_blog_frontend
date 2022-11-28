@@ -100,7 +100,11 @@ function BlogCard({ blog, purpleBackground, userIdState }) {
             <Typography
               variant="h5"
               component="div"
-              sx={{ color: "#FFFFFF" }}
+              sx={{
+                color: "#FFFFFF",
+                fontWeight: "bold",
+                fontFamily: "Arial",
+              }}
               align="center"
             >
               {blog.title}
@@ -117,7 +121,7 @@ function BlogCard({ blog, purpleBackground, userIdState }) {
             <Typography
               variant="body2"
               paragraph
-              sx={{ color: "#FFFFFF" }}
+              sx={{ color: "#FFFFFF", fontFamily: "BlinkMacSystemFont" }}
               fontSize="1rem"
             >
               {/* {blog.content.slice(0, 200).trimEnd()}... */}
@@ -134,9 +138,19 @@ function BlogCard({ blog, purpleBackground, userIdState }) {
                   key={tag.tag_title}
                   color="text.secondary"
                   fontSize=".8rem"
-                  sx={{ color: purpleBackground }}
+                  // sx={{ color: purpleBackground }}
+                  sx={{
+                    borderRadius: 1,
+                    // border: 1,
+                    // borderColor: "secondary.main",
+                    // backgroundColor: "secondary",
+                    // opacity: 0.7,
+                    color: "white",
+                    mr: "1rem",
+                  }}
+                  style={{ backgroundColor: "#607d8b" }}
                 >
-                  #{tag.tag_title}&nbsp;&nbsp;
+                  <div>&nbsp;&nbsp;#{tag.tag_title}&nbsp;&nbsp;</div>
                 </Typography>
               ))}
             </Grid>
