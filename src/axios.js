@@ -41,7 +41,8 @@ axiosInstance.interceptors.response.use(
 
     if (
       error.response.status === 401 &&
-      originalRequest.url === baseURL + "token/refresh/"
+      // originalRequest.url === baseURL + "token/refresh/"
+      originalRequest.url === baseURL + "users/token/refresh/"
     ) {
       window.location.href = "/login/";
       return Promise.reject(error);
@@ -62,22 +63,25 @@ axiosInstance.interceptors.response.use(
         // console.log(tokenParts.exp);
 
         if (tokenParts.exp > now) {
-          return axiosInstance
-            .post("/token/refresh/", { refresh: refreshToken })
-            .then((response) => {
-              localStorage.setItem("access_token", response.data.access);
-              localStorage.setItem("refresh_token", response.data.refresh);
+          return (
+            axiosInstance
+              // .post("/token/refresh/", { refresh: refreshToken })
+              .post("users/token/refresh/", { refresh: refreshToken })
+              .then((response) => {
+                localStorage.setItem("access_token", response.data.access);
+                localStorage.setItem("refresh_token", response.data.refresh);
 
-              axiosInstance.defaults.headers["Authorization"] =
-                "JWT " + response.data.access;
-              originalRequest.headers["Authorization"] =
-                "JWT " + response.data.access;
+                axiosInstance.defaults.headers["Authorization"] =
+                  "JWT " + response.data.access;
+                originalRequest.headers["Authorization"] =
+                  "JWT " + response.data.access;
 
-              return axiosInstance(originalRequest);
-            })
-            .catch((err) => {
-              console.log(err);
-            });
+                return axiosInstance(originalRequest);
+              })
+              .catch((err) => {
+                console.log(err);
+              })
+          );
         } else {
           console.log("Refresh token is expired", tokenParts.exp, now);
           window.location.href = "/login/";
