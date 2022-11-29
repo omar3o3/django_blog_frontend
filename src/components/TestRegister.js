@@ -14,8 +14,9 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 // import { useHistory } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
-const theme = createTheme();
+import jwt_decode from "jwt-decode";
 
+const theme = createTheme();
 
 export default function SignUp({ purpleBackground, setLoggedState }) {
   // const history = useHistory();
@@ -57,17 +58,35 @@ export default function SignUp({ purpleBackground, setLoggedState }) {
       })
       .then((res) => {
         // history.push("/login");
-
-        localStorage.setItem("firstName", res.data.first_name);
-        localStorage.setItem("lastName", res.data.last_name);
-        localStorage.setItem("email", res.data.email);
-        localStorage.setItem("userName", res.data.user_name);
-        localStorage.setItem("userId", res.data.user_id);
-        setLoggedState(localStorage.getItem("firstName", res.data.first_name));
-
+        // const decodedData = jwt_decode(res.data.access);
+        // console.log('res' , res)
+        // console.log('res.data' , res.data)
+        // console.log('decodedData' , decodedData)
+        // localStorage.setItem("firstName", decodedData.firstName);
+        // localStorage.setItem("lastName", decodedData.lastName);
+        // localStorage.setItem("email", decodedData.email);
+        // localStorage.setItem("userName", decodedData.userName);
+        // localStorage.setItem("userId", decodedData.user_id);
+        // localStorage.setItem("access_token", res.data.access);
+        // localStorage.setItem("refresh_token", res.data.refresh);
+        // axiosInstance.defaults.headers["Authorization"] =
+        //   "JWT " + localStorage.getItem("access_token");
+        // localStorage.setItem("firstName", res.data.first_name);
+        // localStorage.setItem("lastName", res.data.last_name);
+        // localStorage.setItem("email", res.data.email);
+        // localStorage.setItem("userName", res.data.user_name);
+        // localStorage.setItem("userId", res.data.user_id);
+        // localStorage.setItem("access_token", res.data.access);
+        // localStorage.setItem("refresh_token", res.data.refresh);
+        // axiosInstance.defaults.headers["Authorization"] =
+        //   "JWT " + localStorage.getItem("access_token");
+        // navigate("/home");
+        // setLoggedState(localStorage.getItem("firstName", res.data.first_name));
+        // setLoggedState(localStorage.getItem("firstName"));
         // console.log(res);
         // console.log(res.data);
-        navigate("/home");
+        // navigate("/home");
+        navigate("/login");
       })
       .catch((err) => console.log(err));
   };
