@@ -8,6 +8,9 @@ import Stack from "@mui/material/Stack";
 import Box from "@mui/material/Box";
 
 function RenderComments({ comment, user, purpleBackground }) {
+
+  // console.log(comment)
+
   return (
     <Box
       sx={{ width: "100%", borderTop: 1, borderColor: purpleBackground }}
@@ -21,7 +24,7 @@ function RenderComments({ comment, user, purpleBackground }) {
           align="right"
           spacing={1}
         >
-          Comment by {user}
+          Comment by {comment.user}
         </Typography>
         <Typography
           variant="body2"

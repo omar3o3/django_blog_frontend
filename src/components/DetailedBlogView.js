@@ -49,8 +49,9 @@ function DetailedBlogView({ purpleBackground }) {
         .then((data) => {
           let newComArr = [...prevCommentsState];
           newComArr.push(data);
-          console.log(newComArr);
+          // console.log(newComArr);
           setPrevCommentsState(newComArr);
+          console.log(data)
         });
     }
   };
