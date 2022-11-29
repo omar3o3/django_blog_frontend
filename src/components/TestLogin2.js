@@ -57,7 +57,7 @@ export default function SignInSide({
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formData);
+    // console.log(formData);
 
     axiosInstance
       .post(`users/token/`, {
@@ -88,8 +88,8 @@ export default function SignInSide({
         axiosInstance.defaults.headers["Authorization"] =
           "JWT " + localStorage.getItem("access_token");
         navigate("/home");
-        console.log(res);
-        console.log(res.data);
+        // console.log(res);
+        // console.log(res.data);
       });
   };
 

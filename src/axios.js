@@ -7,14 +7,21 @@ const axiosInstance = axios.create({
   timeout: 60000,
   headers: {
     Authorization: localStorage.getItem("access_token")
-      ?
-        "Bearer " + localStorage.getItem("access_token")
-      : null,
+      ? 
+        "JWT " + localStorage.getItem("access_token")
+      : // "Bearer " + localStorage.getItem("access_token")
+        null,
     "Content-Type": "application/json",
     accept: "application/json",
   },
 });
 // ? "JWT " + localStorage.getItem("access_token")
+
+// when authentication header began with 'Bearer' i was getting an error from django saying the auth credentials
+// were not provided
+
+// it was originally 'JWT' but i changed it to 'Bearer' due to a different authentication error, but i dont remember
+// what the error was
 
 axiosInstance.interceptors.response.use(
   (response) => {
