@@ -17,6 +17,7 @@ export default function SignUp({ setLoggedState }) {
     localStorage.removeItem("lastName");
     localStorage.removeItem("email");
     localStorage.removeItem("userName");
+    localStorage.removeItem("userId");
     axiosInstance.defaults.headers["Authorization"] = null;
 
     setLoggedState(false)

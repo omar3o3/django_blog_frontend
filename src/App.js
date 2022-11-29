@@ -95,7 +95,6 @@ function App() {
               <History
                 purpleBackground={purpleBackground}
                 mainBlackBackground={mainBlackBackground}
-                userIdState={userIdState}
               />
             }
           />
