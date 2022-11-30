@@ -10,13 +10,19 @@ import axiosInstance from "../axios";
 function History({ purpleBackground, mainBlackBackground }) {
 
   const [blogState , setBlogState] = useState(false)
+  const [noDataState, setNoDataState] = useState(false);
   const userId = localStorage.getItem("userId")
 
   useEffect(() => {
     axiosInstance
       .get(`blog-api/user-history/${parseInt(userId)}`)
       // .then((resp) => console.log(resp.data));
-      .then((resp) => setBlogState(resp.data));
+      .then((resp) => setBlogState(resp.data))
+      .catch(err => {
+        console.log(err)
+        setBlogState([]);
+        setNoDataState(true);
+      });
   }, [userId]);
 
   return (
@@ -31,6 +37,7 @@ function History({ purpleBackground, mainBlackBackground }) {
             sx={{ mt: "10rem", color: purpleBackground }}
           />
         )}
+        {noDataState ? <h1 style={{color: 'white'}}>No Previous Posts</h1> : null}
       </Grid>
     </div>
   );
