@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
+import Stack from "@mui/material/Stack";
 import CreateIcon from "@mui/icons-material/Create";
 import Fab from "@mui/material/Fab";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
@@ -59,9 +60,17 @@ function LandingPage({ purpleBackground, mainBlackBackground, userIdState }) {
             </Box>
           </Grid>
           <SearchBar setBlogState={setBlogState} />
-          <Box>
-            {/* spacing={2} */}
-            <Grid container justifyContent="center">
+          {/* <Box justifyContent="center"> */}
+          {/* spacing={2} */}
+          <Grid container justifyContent="center">
+            <Stack
+              direction="column"
+              // justifyContent="flex-start"
+              // alignItems="center"
+              spacing={2}
+              sx={{ width: "60%" }}
+              // sx={{ width: "40%" }}
+            >
               {blogState.map((blog) => (
                 <BlogCard
                   blog={blog}
@@ -69,8 +78,9 @@ function LandingPage({ purpleBackground, mainBlackBackground, userIdState }) {
                   userIdState={userIdState}
                 />
               ))}
-            </Grid>
-          </Box>
+            </Stack>
+          </Grid>
+          {/* </Box> */}
         </Box>
       </ThemeProvider>
     </div>

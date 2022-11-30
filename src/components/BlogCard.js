@@ -4,6 +4,7 @@ import axiosInstance from "../axios";
 
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
+import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
@@ -63,7 +64,8 @@ function BlogCard({ blog, purpleBackground, userIdState }) {
   };
 
   return (
-    <Grid item xs={8} key={blog.id} sx={{ backgroundColor: "black" }}>
+    // xs={8}
+    <Grid item key={blog.id} sx={{ backgroundColor: "black" }}>
       <CardActionArea onClick={handleDetailedView}>
         <Card
           sx={{
@@ -167,19 +169,19 @@ function BlogCard({ blog, purpleBackground, userIdState }) {
                 purpleBackground={purpleBackground}
                 hotPink={hotPink}
               /> */}
-              <CardActions>
-                <Grid
+              {/* <CardActions> */}
+                {/* <Grid
                   container
                   direction="row"
                   justifyContent="flex-end"
                   alignItems="flex-start"
-                ></Grid>
-              </CardActions>
+                ></Grid> */}
+              {/* </CardActions> */}
             </Box>
           </CardContent>
         </Card>
       </CardActionArea>
-    </Grid>
+      </Grid>
   );
 }
 
