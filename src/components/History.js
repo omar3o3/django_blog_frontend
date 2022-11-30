@@ -37,7 +37,11 @@ function History({ purpleBackground, mainBlackBackground }) {
             sx={{ mt: "10rem", color: purpleBackground }}
           />
         )}
-        {noDataState ? <h1 style={{color: 'white'}}>No Previous Posts</h1> : null}
+        {noDataState ? (
+          <Typography ariant="h1" style={{ color: "white" }}>
+            No Previous Posts
+          </Typography>
+        ) : null}
       </Grid>
     </div>
   );
