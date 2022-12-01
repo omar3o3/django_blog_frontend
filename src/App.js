@@ -90,7 +90,7 @@ function App() {
             }
           />
           <Route
-            path="/history"
+            path="/account"
             element={
               <History
                 purpleBackground={purpleBackground}
@@ -98,7 +98,7 @@ function App() {
               />
             }
           />
-          <Route
+          {/* <Route
             path="/account"
             element={
               <Account
@@ -107,7 +107,7 @@ function App() {
                 userIdState={userIdState}
               />
             }
-          />
+          /> */}
           <Route
             path="/create-post"
             element={

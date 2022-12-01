@@ -52,7 +52,6 @@ function LandingPage({ purpleBackground, mainBlackBackground, userIdState }) {
                 color="secondary"
                 aria-label="add"
                 style={FabStyle}
-                // size="large"
                 onClick={() => navigate("/create-post")}
               >
                 <CreateIcon />
@@ -60,16 +59,11 @@ function LandingPage({ purpleBackground, mainBlackBackground, userIdState }) {
             </Box>
           </Grid>
           <SearchBar setBlogState={setBlogState} />
-          {/* <Box justifyContent="center"> */}
-          {/* spacing={2} */}
           <Grid container justifyContent="center">
             <Stack
               direction="column"
-              // justifyContent="flex-start"
-              // alignItems="center"
               spacing={2}
               sx={{ width: "60%" }}
-              // sx={{ width: "40%" }}
             >
               {blogState.map((blog) => (
                 <BlogCard
@@ -80,7 +74,6 @@ function LandingPage({ purpleBackground, mainBlackBackground, userIdState }) {
               ))}
             </Stack>
           </Grid>
-          {/* </Box> */}
         </Box>
       </ThemeProvider>
     </div>
