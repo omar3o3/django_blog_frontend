@@ -13,12 +13,8 @@ import BlogCard from "./BlogCard";
 import axiosInstance from "../axios";
 import SearchBar from "./SearchBar";
 
-function LandingPage({ purpleBackground, mainBlackBackground, userIdState }) {
+function ExploreFeed({ purpleBackground, mainBlackBackground }) {
   const navigate = useNavigate();
-
-  const [blogState, setBlogState] = useState([]);
-  const [errorState, setErrorState] = useState(false);
-  const userId = localStorage.getItem("userId");
 
   const theme = createTheme({
     palette: {
@@ -38,20 +34,13 @@ function LandingPage({ purpleBackground, mainBlackBackground, userIdState }) {
     position: "fixed",
   };
 
-  // useEffect(() => {
-  //   axiosInstance
-  //     .get("blog-api/get-blogs")
-  //     .then((resp) => setBlogState(resp.data));
-  // }, []);
+  const [blogState, setBlogState] = useState([]);
 
-    useEffect(() => {
-      axiosInstance
-        .get(`blog-api/get-following-posts/${parseInt(userId)}`)
-        .then((resp) => setBlogState(resp.data))
-        .catch(err => setErrorState(true));
-    }, [userId]);
-
-  // console.log(blogState);
+  useEffect(() => {
+    axiosInstance
+      .get("blog-api/get-blogs")
+      .then((resp) => setBlogState(resp.data));
+  }, []);
 
   return (
     <div className="beneathAppBar">
@@ -69,23 +58,16 @@ function LandingPage({ purpleBackground, mainBlackBackground, userIdState }) {
               </Fab>
             </Box>
           </Grid>
-          {/* <SearchBar setBlogState={setBlogState} /> */}
+          <SearchBar setBlogState={setBlogState} />
           <Grid container justifyContent="center">
             <Stack direction="column" spacing={2} sx={{ width: "60%" }}>
               {blogState.map((blog) => (
                 <BlogCard
                   blog={blog}
                   purpleBackground={purpleBackground}
-                  userIdState={userIdState}
                 />
               ))}
             </Stack>
-            {errorState ? (
-              <Typography variant="h5">
-                No posts to show, explore more users and posts to customize your
-                feed!
-              </Typography>
-            ) : null}
           </Grid>
         </Box>
       </ThemeProvider>
@@ -93,4 +75,4 @@ function LandingPage({ purpleBackground, mainBlackBackground, userIdState }) {
   );
 }
 
-export default LandingPage;
+export default ExploreFeed;
