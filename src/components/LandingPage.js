@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Stack from "@mui/material/Stack";
+import Typography from "@mui/material/Typography";
 import CreateIcon from "@mui/icons-material/Create";
 import Fab from "@mui/material/Fab";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
@@ -16,6 +17,8 @@ function LandingPage({ purpleBackground, mainBlackBackground, userIdState }) {
   const navigate = useNavigate();
 
   const [blogState, setBlogState] = useState([]);
+  const [errorState, setErrorState] = useState(false);
+  const userId = localStorage.getItem("userId");
 
   const theme = createTheme({
     palette: {
@@ -35,11 +38,19 @@ function LandingPage({ purpleBackground, mainBlackBackground, userIdState }) {
     position: "fixed",
   };
 
-  useEffect(() => {
-    axiosInstance
-      .get("blog-api/get-blogs")
-      .then((resp) => setBlogState(resp.data));
-  }, []);
+  // useEffect(() => {
+  //   axiosInstance
+  //     .get("blog-api/get-blogs")
+  //     .then((resp) => setBlogState(resp.data));
+  // }, []);
+
+    useEffect(() => {
+      axiosInstance
+        .get(`blog-api/get-following-posts/${parseInt(userId)}`)
+        .then((resp) => setBlogState(resp.data))
+        .catch(err => setErrorState(true));
+    }, [userId]);
+
   // console.log(blogState);
 
   return (
@@ -60,11 +71,7 @@ function LandingPage({ purpleBackground, mainBlackBackground, userIdState }) {
           </Grid>
           <SearchBar setBlogState={setBlogState} />
           <Grid container justifyContent="center">
-            <Stack
-              direction="column"
-              spacing={2}
-              sx={{ width: "60%" }}
-            >
+            <Stack direction="column" spacing={2} sx={{ width: "60%" }}>
               {blogState.map((blog) => (
                 <BlogCard
                   blog={blog}
@@ -73,6 +80,12 @@ function LandingPage({ purpleBackground, mainBlackBackground, userIdState }) {
                 />
               ))}
             </Stack>
+            {errorState ? (
+              <Typography variant="h5">
+                No posts to show, explore more users and posts to customize your
+                feed!
+              </Typography>
+            ) : null}
           </Grid>
         </Box>
       </ThemeProvider>
