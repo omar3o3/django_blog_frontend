@@ -76,7 +76,6 @@ function LandingPage({ purpleBackground, mainBlackBackground, userIdState }) {
                 <BlogCard
                   blog={blog}
                   purpleBackground={purpleBackground}
-                  userIdState={userIdState}
                 />
               ))}
             </Stack>

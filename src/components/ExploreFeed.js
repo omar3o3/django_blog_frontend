@@ -12,6 +12,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import BlogCard from "./BlogCard";
 import axiosInstance from "../axios";
 import SearchBar from "./SearchBar";
+import UsersList from "./UsersList";
 
 function ExploreFeed({ purpleBackground, mainBlackBackground }) {
   const navigate = useNavigate();
@@ -60,6 +61,7 @@ function ExploreFeed({ purpleBackground, mainBlackBackground }) {
           </Grid>
           <SearchBar setBlogState={setBlogState} />
           <Grid container justifyContent="center">
+            <UsersList/>
             <Stack direction="column" spacing={2} sx={{ width: "60%" }}>
               {blogState.map((blog) => (
                 <BlogCard

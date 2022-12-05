@@ -5,7 +5,7 @@ import Button from "@mui/material/Button";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
 
-import axiosInstance from "../axios";
+import axiosInstance from "../../axios";
 
 function LikerComp({ blogId, hotPink, purpleBackground }) {
   const [likeState, setLikeState] = useState(false);

@@ -1,31 +1,31 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axiosInstance from "../axios";
+// import axiosInstance from "../axios";
 
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
-import Stack from "@mui/material/Stack";
-import Button from "@mui/material/Button";
+// import Stack from "@mui/material/Stack";
+// import Button from "@mui/material/Button";
 import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
+// import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
-import TextField from "@mui/material/TextField";
-import ClearIcon from "@mui/icons-material/Clear";
+// import TextField from "@mui/material/TextField";
+// import ClearIcon from "@mui/icons-material/Clear";
 import CardActionArea from "@mui/material/CardActionArea";
 // import {CardActionArea} from "@mui/material";
 
-import LikerComp from "./LikerComp";
-import CreateComments from "./CreateComments";
+// import LikerComp from "./LikerComp";
+// import CreateComments from "./CreateComments";
 // import ShowComments from "./ShowComments";
 
-function BlogCard({ blog, purpleBackground, userIdState }) {
-  const [createState, setCreateState] = useState(false);
-  const [commentState, setCommentState] = useState("");
+function BlogCard({ blog, purpleBackground }) {
+  // const [createState, setCreateState] = useState(false);
+  // const [commentState, setCommentState] = useState("");
   //   console.log(commentState);
   const userId = localStorage.getItem("userId");
 
-  const hotPink = "#f20256";
+  // const hotPink = "#f20256";
 
   const navigate = useNavigate();
 
