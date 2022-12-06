@@ -13,16 +13,20 @@ import CardContent from "@mui/material/CardContent";
 import TextField from "@mui/material/TextField";
 import CardActionArea from "@mui/material/CardActionArea";
 import ClearIcon from "@mui/icons-material/Clear";
+import { styled } from "@mui/material/styles";
 
 function DetailedBlogView({ purpleBackground }) {
   const location = useLocation();
   const blogId = location.state.blogId;
+  const renderFromExplore = location.state.renderFromExplore;
   //   const navigate = useNavigate()
   const [blogState, setBlogState] = useState(false);
   const [createState, setCreateState] = useState(false);
   const [commentState, setCommentState] = useState("");
   const userId = localStorage.getItem("userId");
   const [prevCommentsState, setPrevCommentsState] = useState([]);
+
+  // console.log(renderFromExplore);
 
   useEffect(() => {
     axiosInstance
@@ -51,7 +55,7 @@ function DetailedBlogView({ purpleBackground }) {
           newComArr.push(data);
           // console.log(newComArr);
           setPrevCommentsState(newComArr);
-          console.log(data)
+          console.log(data);
         });
     }
   };
@@ -75,6 +79,20 @@ function DetailedBlogView({ purpleBackground }) {
     return `${splitYear[1]}/${splitYear[2]}/${splitYear[0]}`;
   };
 
+  const LowerCaseButton = styled(Button)(({ theme }) => ({
+    textTransform: "none",
+    "&:hover": {
+      color: "gray",
+      borderColor: "gray",
+    },
+    "&:hover:before": {
+      backgroundColor: "#ffffff",
+    },
+    fontSize: 14,
+    color: "#a6a6a6",
+    borderColor: "#a6a6a6",
+  }));
+
   //   console.log(prevCommentsState)
 
   return (
@@ -97,14 +115,32 @@ function DetailedBlogView({ purpleBackground }) {
                   justifyContent="space-between"
                   alignItems="flex-start"
                 >
-                  <Typography
+                  {renderFromExplore ? (
+                    <LowerCaseButton
+                      variant="outlined"
+                      size="small"
+                      onClick={() => console.log(blogState.user)}
+                    >
+                      @{blogState.user}
+                    </LowerCaseButton>
+                  ) : (
+                    <Typography
+                      sx={{ fontSize: 14, color: "#a6a6a6" }}
+                      color="text.secondary"
+                      // gutterBottom
+                      align="left"
+                    >
+                      @{blogState.user}
+                    </Typography>
+                  )}
+                  {/* <Typography
                     sx={{ fontSize: 14, color: "#a6a6a6" }}
                     color="text.secondary"
                     // gutterBottom
                     align="left"
                   >
                     @{blogState.user}
-                  </Typography>
+                  </Typography> */}
                   <Typography
                     sx={{ fontSize: 14, color: "#a6a6a6" }}
                     color="text.secondary"

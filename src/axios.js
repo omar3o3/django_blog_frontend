@@ -57,9 +57,12 @@ axiosInstance.interceptors.response.use(
 
       if (refreshToken) {
         const tokenParts = JSON.parse(atob(refreshToken.split(".")[1]));
+        console.log('tokenparts' , tokenParts)
+        console.log('tokenparts exp' , tokenParts.exp)
 
         // exp date in token is expressed in seconds, while now() returns milliseconds:
         const now = Math.ceil(Date.now() / 1000);
+        console.log('now' , now)
         // console.log(tokenParts.exp);
 
         if (tokenParts.exp > now) {

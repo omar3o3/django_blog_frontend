@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 // import Stack from "@mui/material/Stack";
-// import Button from "@mui/material/Button";
+import Button from "@mui/material/Button";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
@@ -17,7 +17,13 @@ function BlogCard({ blog, purpleBackground, renderFromExplore }) {
   const navigate = useNavigate();
 
   const handleDetailedView = (e) => {
-    navigate("/post", { state: { blogId: blog.id } });
+    // navigate("/post", { state: { blogId: blog.id } });
+    // renderFromExplore
+    //   ? navigate("/post", { state: { blogId: blog.id, renderFromExplore: renderFromExplore } })
+    //   : navigate("/post", { state: { blogId: blog.id } });
+    navigate("/post", {
+      state: { blogId: blog.id, renderFromExplore: renderFromExplore },
+    });
   };
 
   // console.log(renderFromExplore ? 'its true' : 'its false');
@@ -142,8 +148,7 @@ function BlogCard({ blog, purpleBackground, renderFromExplore }) {
               display="flex"
               justifyContent="space-between"
               alignItems="center"
-            >
-            </Box>
+            ></Box>
           </CardContent>
         </Card>
       </CardActionArea>
