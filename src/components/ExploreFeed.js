@@ -17,6 +17,8 @@ import UsersList from "./UsersList";
 function ExploreFeed({ purpleBackground, mainBlackBackground }) {
   const navigate = useNavigate();
 
+  const renderFromExplore = true;
+
   const theme = createTheme({
     palette: {
       secondary: {
@@ -61,12 +63,13 @@ function ExploreFeed({ purpleBackground, mainBlackBackground }) {
           </Grid>
           <SearchBar setBlogState={setBlogState} />
           <Grid container justifyContent="center">
-            <UsersList/>
+            {/* <UsersList/> */}
             <Stack direction="column" spacing={2} sx={{ width: "60%" }}>
               {blogState.map((blog) => (
                 <BlogCard
                   blog={blog}
                   purpleBackground={purpleBackground}
+                  renderFromExplore={renderFromExplore}
                 />
               ))}
             </Stack>

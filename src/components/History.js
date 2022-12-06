@@ -33,13 +33,14 @@ function History({ purpleBackground, mainBlackBackground }) {
       <Stack direction="column" spacing={2}>
         <Account />
         <Grid container justifyContent="center">
-          <Stack
-            direction="column"
-            spacing={2}
-            sx={{ width: "60%" }}
-          >
+          <Stack direction="column" spacing={2} sx={{ width: "60%" }}>
             {blogState ? (
-              blogState.map((blog) => <BlogCard key={blog.id} blog={blog} />)
+              blogState.map((blog) => (
+                <BlogCard
+                  key={blog.id}
+                  blog={blog}
+                />
+              ))
             ) : (
               <CircularProgress
                 size="5rem"

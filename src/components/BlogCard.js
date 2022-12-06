@@ -7,32 +7,20 @@ import Grid from "@mui/material/Grid";
 // import Stack from "@mui/material/Stack";
 // import Button from "@mui/material/Button";
 import Card from "@mui/material/Card";
-// import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
-// import TextField from "@mui/material/TextField";
-// import ClearIcon from "@mui/icons-material/Clear";
 import CardActionArea from "@mui/material/CardActionArea";
-// import {CardActionArea} from "@mui/material";
 
-// import LikerComp from "./LikerComp";
-// import CreateComments from "./CreateComments";
-// import ShowComments from "./ShowComments";
-
-function BlogCard({ blog, purpleBackground }) {
-  // const [createState, setCreateState] = useState(false);
-  // const [commentState, setCommentState] = useState("");
-  //   console.log(commentState);
+function BlogCard({ blog, purpleBackground, renderFromExplore }) {
   const userId = localStorage.getItem("userId");
-
-  // const hotPink = "#f20256";
 
   const navigate = useNavigate();
 
   const handleDetailedView = (e) => {
-    // console.log(e.target)
     navigate("/post", { state: { blogId: blog.id } });
   };
+
+  // console.log(renderFromExplore ? 'its true' : 'its false');
 
   const dateConverter = (input) => {
     let dateAndYearArr = input.split("T");
@@ -64,7 +52,6 @@ function BlogCard({ blog, purpleBackground }) {
   };
 
   return (
-    // xs={8}
     <Grid item key={blog.id} sx={{ backgroundColor: "black" }}>
       <CardActionArea onClick={handleDetailedView}>
         <Card
@@ -93,7 +80,6 @@ function BlogCard({ blog, purpleBackground }) {
               <Typography
                 sx={{ fontSize: 14, color: "#a6a6a6" }}
                 color="text.secondary"
-                //   gutterBottom
                 align="right"
               >
                 {dateConverter(blog.nyc_time)} {yearConverter(blog.nyc_time)}
@@ -126,7 +112,6 @@ function BlogCard({ blog, purpleBackground }) {
               sx={{ color: "#FFFFFF", fontFamily: "BlinkMacSystemFont" }}
               fontSize="1rem"
             >
-              {/* {blog.content.slice(0, 200).trimEnd()}... */}
               {blogContentTrimmer(blog.content)}
             </Typography>
             <Grid
@@ -140,13 +125,8 @@ function BlogCard({ blog, purpleBackground }) {
                   key={tag.tag_title}
                   color="text.secondary"
                   fontSize=".8rem"
-                  // sx={{ color: purpleBackground }}
                   sx={{
                     borderRadius: 1,
-                    // border: 1,
-                    // borderColor: "secondary.main",
-                    // backgroundColor: "secondary",
-                    // opacity: 0.7,
                     color: "white",
                     mr: "1rem",
                   }}
@@ -163,25 +143,11 @@ function BlogCard({ blog, purpleBackground }) {
               justifyContent="space-between"
               alignItems="center"
             >
-              {/* <LikerComp
-                key={blog.id}
-                blogId={blog.id}
-                purpleBackground={purpleBackground}
-                hotPink={hotPink}
-              /> */}
-              {/* <CardActions> */}
-                {/* <Grid
-                  container
-                  direction="row"
-                  justifyContent="flex-end"
-                  alignItems="flex-start"
-                ></Grid> */}
-              {/* </CardActions> */}
             </Box>
           </CardContent>
         </Card>
       </CardActionArea>
-      </Grid>
+    </Grid>
   );
 }
 
