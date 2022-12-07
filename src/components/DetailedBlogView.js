@@ -17,6 +17,7 @@ import { styled } from "@mui/material/styles";
 
 function DetailedBlogView({ purpleBackground }) {
   const location = useLocation();
+  const navigate = useNavigate();
   const blogId = location.state.blogId;
   const renderFromExplore = location.state.renderFromExplore;
   //   const navigate = useNavigate()
@@ -93,6 +94,13 @@ function DetailedBlogView({ purpleBackground }) {
     borderColor: "#a6a6a6",
   }));
 
+  const handleViewAccount = () =>{
+        navigate("/explore-history", {
+          state: {
+            username: blogState.user
+          },
+        });
+  }
   //   console.log(prevCommentsState)
 
   return (
@@ -119,7 +127,8 @@ function DetailedBlogView({ purpleBackground }) {
                     <LowerCaseButton
                       variant="outlined"
                       size="small"
-                      onClick={() => console.log(blogState.user)}
+                      // onClick={() => console.log(blogState.user)}
+                      onClick={handleViewAccount}
                     >
                       @{blogState.user}
                     </LowerCaseButton>

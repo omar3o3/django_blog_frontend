@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import axiosInstance from "../axios";
 import Typography from "@mui/material/Typography";
-import Grid from "@mui/material/Grid";
+// import Grid from "@mui/material/Grid";
 import Stack from "@mui/material/Stack";
-import Box from "@mui/material/Box";
+// import Box from "@mui/material/Box";
 
 function Account({ purpleBackground, mainBlackBackground, userIdState }) {
   const userId = localStorage.getItem("userId");

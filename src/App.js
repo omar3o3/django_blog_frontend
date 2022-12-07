@@ -16,6 +16,7 @@ import Account from "./components/Account";
 import RedditData from "./components/RedditData";
 import TwitterData from "./components/TwitterData";
 import ExploreFeed from "./components/ExploreFeed";
+import ExploreHistory from "./components/ExploreHistory";
 
 function App() {
 
@@ -149,6 +150,15 @@ function App() {
             path="/Explore"
             element={
               <ExploreFeed
+                purpleBackground={purpleBackground}
+                mainBlackBackground={mainBlackBackground}
+              />
+            }
+          />
+          <Route
+            path="/explore-history"
+            element={
+              <ExploreHistory
                 purpleBackground={purpleBackground}
                 mainBlackBackground={mainBlackBackground}
               />
