@@ -4,6 +4,7 @@ import Typography from "@mui/material/Typography";
 // import Grid from "@mui/material/Grid";
 import Stack from "@mui/material/Stack";
 // import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
 import { useNavigate, useLocation } from "react-router-dom";
 
 function ExploreAccount({ purpleBackground, mainBlackBackground, userIdState }) {
@@ -35,6 +36,9 @@ const blogUserName = location.state.username;
         <Typography variant="h5" sx={{ color: "white" }}>
           {userDataState.comment_count} comments posted
         </Typography>
+        <Button>
+            Follow
+        </Button>
       </Stack>
     </div>
   );

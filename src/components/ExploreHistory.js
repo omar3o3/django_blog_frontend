@@ -25,8 +25,8 @@ function ExploreHistory({ purpleBackground, mainBlackBackground }) {
           setBlogState([]);
           setNoDataState(true);
         });
-    }, []);
-  console.log(blogUserName , 'from explore history');
+    }, [blogUserName]);
+//   console.log(blogUserName , 'from explore history');
 
   return (
     <div
