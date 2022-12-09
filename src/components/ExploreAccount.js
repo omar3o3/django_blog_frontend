@@ -17,6 +17,9 @@ function ExploreAccount({
   const location = useLocation();
   const blogUserName = location.state.username;
   const [userDataState, setUserDateState] = useState([]);
+  const [followedByUserState, setFollowedByUserState] = useState(
+    userDataState.followed_by_user
+  );
 
   useEffect(() => {
     axiosInstance
@@ -25,11 +28,19 @@ function ExploreAccount({
           loggedInUserId
         )}`
       )
-      .then((resp) => setUserDateState(resp.data));
-    // .then((resp) => console.dir(resp.data));
+      .then((resp) => {
+        setUserDateState(resp.data)
+        setFollowedByUserState(resp.data.followed_by_user);
+    });
   }, [blogUserName, loggedInUserId]);
 
-//   console.log(userDataState);
+  const handleFollow = (e) => {
+
+  }
+
+  const handleUnfollow = (e) => {
+
+  }
 
   return (
     <div>
@@ -48,9 +59,11 @@ function ExploreAccount({
         <Typography variant="h5" sx={{ color: "white" }}>
           {userDataState.comment_count} comments posted
         </Typography>
-        {loggedInUserName === userDataState.user_name ? null : (
-        //   <Button>{userDataState.followed_by_user ? 'Unfollow' : 'Follow'}</Button>
-        userDataState.followed_by_user ? <Button>Unfollow</Button> : <Button>Follow</Button>
+        {loggedInUserName ===
+        userDataState.user_name ? null : followedByUserState ? (
+          <Button onClick={(e) => handleUnfollow(e)}>Unfollow</Button>
+        ) : (
+          <Button onClick={(e) => handleFollow(e)}>Follow</Button>
         )}
       </Stack>
     </div>
