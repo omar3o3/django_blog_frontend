@@ -6,7 +6,7 @@ import CircularProgress from "@mui/material/CircularProgress";
 import { useNavigate, useLocation } from "react-router-dom";
 
 import BlogCard from "./BlogCard";
-import Account from "./Account";
+import ExploreAccount from "./ExploreAccount";
 
 import axiosInstance from "../axios";
 
@@ -16,16 +16,16 @@ function ExploreHistory({ purpleBackground, mainBlackBackground }) {
   const location = useLocation();
   const blogUserName = location.state.username;
 
-  //   useEffect(() => {
-  //     axiosInstance
-  //       .get(`blog-api/user-history/${parseInt(userId)}`)
-  //       .then((resp) => setBlogState(resp.data))
-  //       .catch((err) => {
-  //         console.log(err);
-  //         setBlogState([]);
-  //         setNoDataState(true);
-  //       });
-  //   }, [userId]);
+    useEffect(() => {
+      axiosInstance
+        .get(`blog-api/view-other-user-history/${blogUserName}`)
+        .then((resp) => setBlogState(resp.data))
+        .catch((err) => {
+          console.log(err);
+          setBlogState([]);
+          setNoDataState(true);
+        });
+    }, []);
   console.log(blogUserName , 'from explore history');
 
   return (
@@ -33,8 +33,8 @@ function ExploreHistory({ purpleBackground, mainBlackBackground }) {
       className="beneathAppBar"
       style={{ marginLeft: "2rem", marginRight: "2rem" }}
     >
-      {/* <Stack direction="column" spacing={2}>
-        <Account />
+      <Stack direction="column" spacing={2}>
+        <ExploreAccount />
         <Grid container justifyContent="center">
           <Stack direction="column" spacing={2} sx={{ width: "60%" }}>
             {blogState ? (
@@ -52,10 +52,10 @@ function ExploreHistory({ purpleBackground, mainBlackBackground }) {
             No Previous Posts
           </Typography>
         ) : null}
-      </Stack> */}
-      <Typography>
+      </Stack>
+      {/* <Typography>
         hello
-      </Typography>
+      </Typography> */}
     </div>
   );
 }
