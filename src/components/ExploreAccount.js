@@ -7,18 +7,30 @@ import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 import { useNavigate, useLocation } from "react-router-dom";
 
-function ExploreAccount({ purpleBackground, mainBlackBackground, userIdState }) {
-//   const userId = localStorage.getItem("userId");
-const location = useLocation();
-const blogUserName = location.state.username;
+function ExploreAccount({
+  purpleBackground,
+  mainBlackBackground,
+  userIdState,
+}) {
+  const loggedInUserId = localStorage.getItem("userId");
+  const loggedInUserName = localStorage.getItem("userName");
+  const location = useLocation();
+  const blogUserName = location.state.username;
   const [userDataState, setUserDateState] = useState([]);
 
   useEffect(() => {
     axiosInstance
-      .get(`blog-api/view-other-account-info/${blogUserName}`)
+      .get(
+        `blog-api/view-other-account-info/${blogUserName}/${parseInt(
+          loggedInUserId
+        )}`
+      )
       .then((resp) => setUserDateState(resp.data));
     // .then((resp) => console.dir(resp.data));
-  }, [blogUserName]);
+  }, [blogUserName, loggedInUserId]);
+
+//   console.log(userDataState);
+
   return (
     <div>
       <Stack container spacing={2} alignItems="center">
@@ -36,9 +48,10 @@ const blogUserName = location.state.username;
         <Typography variant="h5" sx={{ color: "white" }}>
           {userDataState.comment_count} comments posted
         </Typography>
-        <Button>
-            Follow
-        </Button>
+        {loggedInUserName === userDataState.user_name ? null : (
+        //   <Button>{userDataState.followed_by_user ? 'Unfollow' : 'Follow'}</Button>
+        userDataState.followed_by_user ? <Button>Unfollow</Button> : <Button>Follow</Button>
+        )}
       </Stack>
     </div>
   );
