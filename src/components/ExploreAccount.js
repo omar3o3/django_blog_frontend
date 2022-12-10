@@ -17,9 +17,7 @@ function ExploreAccount({
   const location = useLocation();
   const blogUserName = location.state.username;
   const [userDataState, setUserDateState] = useState([]);
-  const [followedByUserState, setFollowedByUserState] = useState(
-    userDataState.followed_by_user
-  );
+  const [followedByUserState, setFollowedByUserState] = useState(false);
 
   useEffect(() => {
     axiosInstance
@@ -74,9 +72,13 @@ function ExploreAccount({
         </Typography>
         {loggedInUserName ===
         userDataState.user_name ? null : followedByUserState ? (
-          <Button onClick={(e) => handleUnfollow(e)}>Unfollow</Button>
+          <Button sx={{ color: "red" }} onClick={(e) => handleUnfollow(e)}>
+            Unfollow
+          </Button>
         ) : (
-          <Button onClick={(e) => handleFollow(e)}>Follow</Button>
+          <Button sx={{ color: "green" }} onClick={(e) => handleFollow(e)}>
+            Follow
+          </Button>
         )}
       </Stack>
     </div>

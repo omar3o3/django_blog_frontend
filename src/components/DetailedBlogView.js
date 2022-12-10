@@ -123,7 +123,7 @@ function DetailedBlogView({ purpleBackground }) {
                   justifyContent="space-between"
                   alignItems="flex-start"
                 >
-                  {renderFromExplore ? (
+                  {/* {renderFromExplore ? ( */}
                     <LowerCaseButton
                       variant="outlined"
                       size="small"
@@ -132,7 +132,7 @@ function DetailedBlogView({ purpleBackground }) {
                     >
                       @{blogState.user}
                     </LowerCaseButton>
-                  ) : (
+                  {/* ) : (
                     <Typography
                       sx={{ fontSize: 14, color: "#a6a6a6" }}
                       color="text.secondary"
@@ -141,15 +141,7 @@ function DetailedBlogView({ purpleBackground }) {
                     >
                       @{blogState.user}
                     </Typography>
-                  )}
-                  {/* <Typography
-                    sx={{ fontSize: 14, color: "#a6a6a6" }}
-                    color="text.secondary"
-                    // gutterBottom
-                    align="left"
-                  >
-                    @{blogState.user}
-                  </Typography> */}
+                  )} */}
                   <Typography
                     sx={{ fontSize: 14, color: "#a6a6a6" }}
                     color="text.secondary"
