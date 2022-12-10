@@ -29,18 +29,31 @@ function ExploreAccount({
         )}`
       )
       .then((resp) => {
-        setUserDateState(resp.data)
+        setUserDateState(resp.data);
         setFollowedByUserState(resp.data.followed_by_user);
-    });
+      });
   }, [blogUserName, loggedInUserId]);
 
   const handleFollow = (e) => {
-
-  }
+    axiosInstance
+      .post("blog-api/create-following", {
+        logged_in_user_name: loggedInUserName,
+        target_user_name: blogUserName,
+      })
+      .then((resp) => {
+        // console.log(resp.data);
+        setFollowedByUserState((prev) => !prev);
+      });
+  };
 
   const handleUnfollow = (e) => {
-
-  }
+    axiosInstance
+      .delete(`blog-api/delete-following/${loggedInUserName}/${blogUserName}`)
+      .then((resp) => {
+        // console.log(resp.data);
+        setFollowedByUserState((prev) => !prev);
+      });
+  };
 
   return (
     <div>
