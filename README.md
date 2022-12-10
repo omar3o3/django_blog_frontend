@@ -11,4 +11,4 @@ lxml, and selenium.
 
 For the database I used PostgreSQL.
 
-For a walkthrough of this project, please follow this link: {insert link later}
+<!-- For a walkthrough of this project, please follow this link: {insert link later} -->
